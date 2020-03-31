@@ -4,12 +4,13 @@
 
 package Vetereonary.Management.System;
 
-import net.miginfocom.swing.MigLayout;
 import net.proteanit.sql.DbUtils;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,11 +19,12 @@ import java.sql.ResultSet;
 /**
  * @author Jane Doe
  */
-public class List extends javax.swing.JFrame {
+public class List extends JFrame {
 
     static Connection c;
 
     public List() {
+
         initComponents();
         setTitle("Vetereonary Management  System");
         setResizable(false);
@@ -38,16 +40,60 @@ public class List extends javax.swing.JFrame {
     }
 
     private void displaytable(){
+        DefaultListModel model = new DefaultListModel();
+
+                try{
+                    PreparedStatement ps = c.prepareStatement("select * from govis;");
+                    ResultSet set = ps.executeQuery();
+
+                    jTable1.setModel(DbUtils.resultSetToTableModel(set));
+                }
+                catch(Exception e){e.printStackTrace();}
+
 
         try{
+            PreparedStatement ps = c.prepareStatement("select DISTINCT grupa from govis ORDER BY grupa;");
+            ResultSet set = ps.executeQuery();
+
+            while (set.next()) //go through each row that your query returns
+            {
+                String ItemList2 = set.getString("grupa"); //get the element in column "item_code"
+                model.addElement(ItemList2); //add each item to the model
+            }
+            list1.setModel(model);
+        }
+        catch(Exception e){e.printStackTrace();}
+
+    }
+
+    private void jTextField4ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void jButton1ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void jButton2ActionPerformed(ActionEvent e) {
+        // TODO add your code here
+    }
+
+    private void list1ValueChanged(ListSelectionEvent e) {
+        try{
+            Object item= list1.getSelectedValue();
+            String item2= item.toString();
+            int grupa = Integer.parseInt(item2);
             PreparedStatement ps = c.prepareStatement("select * from govis where grupa=?;");
-            ps.setInt(1,2);
+            ps.setInt(1,grupa);
             ResultSet set = ps.executeQuery();
 
             jTable1.setModel(DbUtils.resultSetToTableModel(set));
         }
-        catch(Exception e){e.printStackTrace();}
+        catch(Exception a){a.printStackTrace();}
+    }
 
+    private void button1ActionPerformed(ActionEvent e) {
+        displaytable();
     }
 
     private void initComponents() {
@@ -55,23 +101,14 @@ public class List extends javax.swing.JFrame {
         // Generated using JFormDesigner Evaluation license - Jane Doe
         jScrollPane1 = new JScrollPane();
         jTable1 = new JTable();
+        scrollPane1 = new JScrollPane();
+        list1 = new JList();
+        label1 = new JLabel();
+        button1 = new JButton();
 
         //======== this ========
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         var contentPane = getContentPane();
-        contentPane.setLayout(new MigLayout(
-            "hidemode 3",
-            // columns
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]" +
-            "[fill]",
-            // rows
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
 
         //======== jScrollPane1 ========
         {
@@ -91,7 +128,55 @@ public class List extends javax.swing.JFrame {
             ));
             jScrollPane1.setViewportView(jTable1);
         }
-        contentPane.add(jScrollPane1, "cell 0 0");
+
+        //======== scrollPane1 ========
+        {
+
+            //---- list1 ----
+            list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            list1.addListSelectionListener(e -> list1ValueChanged(e));
+            scrollPane1.setViewportView(list1);
+        }
+
+        //---- label1 ----
+        label1.setText("Grupa");
+
+        //---- button1 ----
+        button1.setText("VISAS");
+        button1.addActionListener(e -> button1ActionPerformed(e));
+
+        GroupLayout contentPaneLayout = new GroupLayout(contentPane);
+        contentPane.setLayout(contentPaneLayout);
+        contentPaneLayout.setHorizontalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addGap(55, 55, 55)
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(button1)
+                            .addContainerGap(717, Short.MAX_VALUE))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGroup(contentPaneLayout.createParallelGroup()
+                                .addComponent(label1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(contentPaneLayout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 537, GroupLayout.PREFERRED_SIZE)
+                            .addGap(110, 110, 110))))
+        );
+        contentPaneLayout.setVerticalGroup(
+            contentPaneLayout.createParallelGroup()
+                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(label1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(button1)
+                    .addContainerGap(196, Short.MAX_VALUE))
+        );
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -101,6 +186,10 @@ public class List extends javax.swing.JFrame {
     // Generated using JFormDesigner Evaluation license - Jane Doe
     private JScrollPane jScrollPane1;
     private JTable jTable1;
+    private JScrollPane scrollPane1;
+    private JList list1;
+    private JLabel label1;
+    private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

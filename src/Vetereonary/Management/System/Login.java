@@ -197,6 +197,7 @@ public class Login extends javax.swing.JFrame {
                 new Home().setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

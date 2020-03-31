@@ -107,8 +107,8 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        NewBook newBook = new NewBook();
-        newBook.setVisible(true);
+        NewCow newCow = new NewCow();
+        newCow.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

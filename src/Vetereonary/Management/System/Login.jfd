@@ -1,0 +1,56 @@
+JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.5" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:75:p, par l {comp jPanel1:::p::p, seq l {space :p:20:p, comp jLabel1:::p:307:p}}, space :p:75:p}}"
+			"$verticalGroup": "par l {seq l {space :p:40:p, comp jLabel1:::p::p, space :p:35:p, comp jPanel1:::p::p, space :p:75:p}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel1"
+				"font": new java.awt.Font( "Times New Roman", 1, 24 )
+				"text": "Library Management System"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {space :::p, par t:::p {comp jLabel3::l:::x, comp jLabel2::l:p:91:p, comp jButton2:::p::p}, space u:::p, par l {seq t {comp jButton1:::p:119:p, space :p:37:p}, seq {par l:::p {comp jTextField1::::198:x, comp jPasswordField1:::::x}, space :p:18:p}}}}"
+				"$verticalGroup": "par l {seq {space :::p, par l:::p {comp jLabel2:::::x, comp jTextField1:::p:22:p}, space :p:21:p, par l:::p {comp jLabel3::l:::x, comp jPasswordField1::l:p:22:p}, space :p:30:p, par b {comp jButton1::b:p::p, comp jButton2::b:p::p}, space :::p}}"
+			} ) {
+				name: "jPanel1"
+				"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 2, false ), "Login", 4, 0, new java.awt.Font( "Tahoma", 0, 24 ), null )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "jButton2"
+					"text": "ABOUT"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton2ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel2"
+					"font": new java.awt.Font( "Times New Roman", 1, 18 )
+					"text": "Username :"
+				} )
+				add( new FormComponent( "javax.swing.JPasswordField" ) {
+					name: "jPasswordField1"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel3"
+					"font": new java.awt.Font( "Times New Roman", 1, 18 )
+					"text": "Password  :"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "jTextField1"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jTextField1ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "jButton1"
+					"text": "LOGIN"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton1ActionPerformed", true ) )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 845, 480 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

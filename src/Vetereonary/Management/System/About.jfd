@@ -1,0 +1,70 @@
+JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.5" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {par l {seq {space :p:130:p, par l:::p {comp jLabel1::::307:x, comp jPanel1:::::x}}, seq l {space :p:223:p, comp jButton1:::p::p}}, space :p:130:p}}"
+			"$verticalGroup": "par l {seq l {space :p:50:p, comp jLabel1:::p::p, space :p:40:p, comp jPanel1:::p::p, space :p:42:p, comp jButton1:::p::p, space :p:40:p}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "jLabel1"
+				"font": new java.awt.Font( "Times New Roman", 1, 24 )
+				"text": "Library Management System"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jButton1"
+				"font": new java.awt.Font( "Tahoma", 1, 11 )
+				"text": "BACK TO LOGIN"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton1ActionPerformed", true ) )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :p:45:p, par l {comp jLabel4:::p::p, comp jLabel3:::p::p, comp jLabel5::l:p::p, comp jLabel6::l:p::p, comp jLabel7::l:p::p, comp jLabel8::l:p::p, comp jLabel9::l:p::p}, space :p:45:p}}"
+				"$verticalGroup": "par l {seq l {space :p:15:p, comp jLabel3:::p::p, space :::p, comp jLabel4:::p::p, space :::p, comp jLabel5:::p::p, space :::p, comp jLabel6:::p::p, space :::p, comp jLabel7:::p::p, space :::p, comp jLabel8:::p::p, space :::p, comp jLabel9:::p::p, space :p:20:p}}"
+			} ) {
+				name: "jPanel1"
+				"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 2, true ), "CREATED BY :-", 4, 0, new java.awt.Font( "Times New Roman", 1, 18 ), null )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel8"
+					"font": new java.awt.Font( "Arial", 0, 12 )
+					"text": "~  JAY PATIL                               PC  20"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel9"
+					"font": new java.awt.Font( "Arial", 0, 12 )
+					"text": "~  KARON SHAH                       PC  31"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel5"
+					"font": new java.awt.Font( "Arial", 0, 12 )
+					"text": "~  MOHIT GARG                         PC  37"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel6"
+					"font": new java.awt.Font( "Arial", 0, 12 )
+					"text": "~  MAITREYA DAROKAR          PC  04"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel3"
+					"font": new java.awt.Font( "Arial", 0, 12 )
+					"text": "~  KRISHNA PATIL                     PC  59"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel4"
+					"font": new java.awt.Font( "Arial", 0, 12 )
+					"text": "~  KARTIKEYA PANDE              PC  13 "
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel7"
+					"font": new java.awt.Font( "Arial", 0, 12 )
+					"text": "~  JENIL JAIN                             PC  46"
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 580, 405 )
+			"location": new java.awt.Point( 5, 0 )
+		} )
+	}
+}

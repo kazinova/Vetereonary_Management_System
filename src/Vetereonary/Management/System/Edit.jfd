@@ -11,8 +11,8 @@ new FormModel {
 			name: "this"
 			"defaultCloseOperation": 3
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {par l {seq l {space :p:44:p, comp jButton1:::p::p, space :p:61:p, comp jButton2:::p::p, space :0:0:x}, seq {space :::p, par l {seq l {comp jLabel4:::p::p, space ::175:x, comp jTextField4:::p:197:p}, seq t {comp jLabel3:::p::p, space ::234:x, comp jTextField3:::p:197:p}, seq t {comp jLabel2:::p::p, space ::227:x, comp jTextField2:::p:197:p}}}, seq t {space :::p, par l {comp jLabel1::l:p::p, comp jLabel5::l:p::p}, space ::168:x, par l:::p {comp jTextField1::::197:x, comp textField1::::197:x}}, seq t {space ::381:x, comp button1:::p:85:p}}, space :::p}}"
-				"$verticalGroup": "par l {seq l {space :p:15:p, par b {comp jLabel5::b:p::p, comp textField1::b:p::p}, space :::p, comp button1:::p::p, space :::x, par l {comp jTextField1:::p::p, comp jLabel1:::p::p}, space u:::p, par b {comp jTextField2::b:p::p, comp jLabel2::b:p::p}, space s:::p, par b {comp jTextField3::b:p::p, comp jLabel3::b:p::p}, space s:::p, par b {comp jLabel4::b:p::p, comp jTextField4::b:p::p}, space s:::p, par b {comp jButton1::b:p::p, comp jButton2::b:p::p}, space :::p}}"
+				"$horizontalGroup": "par l {seq {par l {seq l {space :p:44:p, comp jButton1:::p:90:p, space :p:61:p, comp jButton2:::p:90:p, space :p:67:p, comp button2:::p:90:p, space :0:0:x}, seq {space :::p, par l {seq l {comp jLabel4:::p::p, space :::x, comp jTextField4:::p:197:p}, seq t {comp jLabel3:::p::p, space :::x, comp jTextField3:::p:197:p}, seq t {comp jLabel2:::p::p, space :::x, comp jTextField2:::p:197:p}}}, seq t {space :::p, par l {comp jLabel1::l:p::p, comp jLabel5::l:p::p}, space :::x, par l:::p {comp jTextField1::::197:x, comp textField1::::197:x}}, seq t {space :::x, comp button1:::p:80:p}}, space :::p}}"
+				"$verticalGroup": "par l {seq l {space :p:15:p, par b {comp jLabel5::b:p::p, comp textField1::b:p::p}, space :::p, comp button1:::p::p, space :::x, par l {comp jTextField1:::p::p, comp jLabel1:::p::p}, space u:::p, par b {comp jTextField2::b:p::p, comp jLabel2::b:p::p}, space s:::p, par b {comp jTextField3::b:p::p, comp jLabel3::b:p::p}, space s:::p, par b {comp jLabel4::b:p::p, comp jTextField4::b:p::p}, space s:::p, par b {comp jButton1::b:p::p, comp button2::b:p::p, comp jButton2::b:p::p}, space :::p}}"
 			} ) {
 				name: "jPanel1"
 				"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 2, true ), "Rediģēt govi", 4, 0, new java.awt.Font( "Tahoma", 0, 24 ), null )
@@ -66,6 +66,11 @@ new FormModel {
 					name: "button1"
 					"text": "ATRAST"
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button2"
+					"text": "ATPAKAĻ"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"

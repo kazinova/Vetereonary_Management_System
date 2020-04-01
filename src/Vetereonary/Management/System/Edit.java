@@ -49,9 +49,10 @@ public class Edit extends JFrame {
                 ps.setInt(4, Integer.parseInt(jTextField3.getText()));
                 ps.setInt(5, Integer.parseInt(textField1.getText()));
                 ps.execute();
+                JOptionPane.showMessageDialog(new JFrame(), "Lauki ir rediģēti!", "Message" , JOptionPane.INFORMATION_MESSAGE);
             }catch(Exception a) {
                 a.printStackTrace();
-                JOptionPane.showMessageDialog(new JFrame(), a.getMessage(), "Message" , JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "Nav pareizi aizpildīti lauki!", "Message" , JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
@@ -72,7 +73,7 @@ public class Edit extends JFrame {
                 jTextField4.setText("");
             }catch(Exception a) {
                 a.printStackTrace();
-                JOptionPane.showMessageDialog(new JFrame(), a.getMessage(), "Message" , JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "Nav izdevies izdzēst ierakstu!", "Message" , JOptionPane.INFORMATION_MESSAGE);
             }
         }
 
@@ -115,6 +116,12 @@ public class Edit extends JFrame {
         }
     }
 
+    private void button2ActionPerformed(ActionEvent e) {
+        Home home = new Home();
+        home.setVisible(true);
+        this.dispose();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Jane Doe
@@ -132,6 +139,7 @@ public class Edit extends JFrame {
         jLabel5 = new JLabel();
         textField1 = new JTextField();
         button1 = new JButton();
+        button2 = new JButton();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -150,12 +158,12 @@ public class Edit extends JFrame {
         {
             jPanel1.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Redi\u0123\u0113t govi", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
-            jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,jPanel1. getBorder( )) ); jPanel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,jPanel1. getBorder( )) ); jPanel1. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
 
             //---- jTextField4 ----
             jTextField4.addActionListener(e -> jTextField4ActionPerformed(e));
@@ -187,6 +195,10 @@ public class Edit extends JFrame {
             button1.setText("ATRAST");
             button1.addActionListener(e -> button1ActionPerformed(e));
 
+            //---- button2 ----
+            button2.setText("ATPAKA\u013b");
+            button2.addActionListener(e -> button2ActionPerformed(e));
+
             GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
             jPanel1Layout.setHorizontalGroup(
@@ -195,37 +207,39 @@ public class Edit extends JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup()
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
-                                .addComponent(jButton1)
+                                .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                                 .addGap(61, 61, 61)
-                                .addComponent(jButton2)
+                                .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                .addGap(67, 67, 67)
+                                .addComponent(button2, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup()
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jTextField4, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))
                                     .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jTextField3, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))
                                     .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))))
                             .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup()
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel5))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField1, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                                     .addComponent(textField1, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)))
                             .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(381, Short.MAX_VALUE)
-                                .addComponent(button1, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(button1, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
             );
             jPanel1Layout.setVerticalGroup(
@@ -256,6 +270,7 @@ public class Edit extends JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
+                            .addComponent(button2)
                             .addComponent(jButton2))
                         .addContainerGap())
             );
@@ -282,6 +297,7 @@ public class Edit extends JFrame {
     private JLabel jLabel5;
     private JTextField textField1;
     private JButton button1;
+    private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     public static void main(String args[]) throws SQLException {
 
@@ -290,14 +306,6 @@ public class Edit extends JFrame {
                 new Edit().setVisible(true);
             }
         });
-
-//        PreparedStatement ps = c.prepareStatement("update govis set Vārds=?, Numurs=?, Atnešanās_datums=?, Grupa=? where Numurs=?; ");
-//        ps.setString(1, "MAIT23A");
-//        ps.setInt(2, 1111);
-//        ps.setDate(3, java.sql.Date.valueOf("2013-09-04"));
-//        ps.setInt(4, 11);
-//        ps.setInt(5, 1111);
-//        ps.execute();
 
     }
 }

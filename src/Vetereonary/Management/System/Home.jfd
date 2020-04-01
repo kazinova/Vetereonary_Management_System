@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:100:p, par l:::p {comp jLabel1:::::x, seq {par l:::p {comp jButton1:::p:115:p, comp jButton4:::p:115:p}, space :p:60:p, par l:::p {comp jButton5:::p:115:p, comp jButton2:::p:115:p}, space :p:60:p, par l:::p {comp jButton3:::p:115:p, comp jButton6:::p:115:p}}}, space :p:100:p}}"
-			"$verticalGroup": "par l {seq l {space :p:50:p, comp jLabel1:::p::p, space :p:70:p, par b {comp jButton1::b:p:45:p, comp jButton2::b:p:45:p, comp jButton3::b:p:45:p}, space :p:70:p, par b {comp jButton5::b:p:45:p, comp jButton6::b:p:45:p, comp jButton4::b:p:45:p}, space :p:85:p}}"
+			"$horizontalGroup": "par l {seq l {space :p:100:p, par l:::p {comp jLabel1:::::x, seq {par l {seq l {space :p:175:p, par l {comp jButton2:::p:115:p, comp jButton5:::p:115:p, comp jButton8::l:p:115:p}}, comp jButton1::l:p:115:p, comp jButton4::l:p:115:p, comp jButton7::l:p:115:p}, space :p:60:p, par t {comp jButton3:::p:115:p, comp jButton6:::p:115:p, comp jButton9:::p:115:p}}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :p:50:p, comp jLabel1:::p::p, space s:::p, par b {comp jButton1::b:p:45:p, comp jButton2::b:p:45:p, comp jButton3::b:p:45:p}, space :p:34:p, par b {comp jButton4::b:p:45:p, comp jButton5::b:p:45:p, comp jButton6::b:p:45:p}, space :p:36:p, par b {comp jButton7::b:p:45:p, comp jButton8::b:p:45:p, comp jButton9::b:p:45:p}, space :p:120:p}}"
 		} ) {
 			name: "this"
 			"defaultCloseOperation": 3
@@ -17,7 +17,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jButton1"
 				"font": new java.awt.Font( "Times New Roman", 1, 14 )
-				"text": "New Book"
+				"text": "Jauna Govs"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton1ActionPerformed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -34,7 +34,7 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jButton4"
-				"font": new java.awt.Font( "Times New Roman", 1, 14 )
+				"font": &Font0 new java.awt.Font( "Times New Roman", 1, 14 )
 				"text": "Issue Book"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton4ActionPerformed", true ) )
 			} )
@@ -50,9 +50,27 @@ new FormModel {
 				"text": "Logout"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton6ActionPerformed", true ) )
 			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jButton7"
+				"font": #Font0
+				"text": "Rediģēt Govi"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton7ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jButton8"
+				"font": #Font0
+				"text": "Saraksts"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton8ActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "jButton9"
+				"font": #Font0
+				"text": "Meklēt"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton9ActionPerformed", true ) )
+			} )
 		}, new FormLayoutConstraints( null ) {
-			"size": new java.awt.Dimension( 680, 460 )
-			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 670, 460 )
+			"location": new java.awt.Point( 175, 65 )
 		} )
 	}
 }

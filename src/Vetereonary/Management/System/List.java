@@ -34,7 +34,7 @@ public class List extends JFrame {
         jTable1.setEnabled(false);
 
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/vetDB", "root", "");
             displaytable();
         }
@@ -112,7 +112,6 @@ public class List extends JFrame {
         home.setVisible(true);
         this.dispose();
     }
-
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents

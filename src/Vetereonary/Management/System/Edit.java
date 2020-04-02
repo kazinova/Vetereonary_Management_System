@@ -24,7 +24,6 @@ public class Edit extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         try{
-            Class.forName("com.mysql.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/vetDB", "root", "");
         }
         catch(Exception e){e.printStackTrace();}

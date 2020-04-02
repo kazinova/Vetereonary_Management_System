@@ -31,7 +31,6 @@ public class DayCount extends JFrame {
         setLocationRelativeTo(null);
 
         try{
-            Class.forName("com.mysql.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/vetDB", "root", "");
         }
         catch(Exception e){e.printStackTrace();}
@@ -116,12 +115,13 @@ public class DayCount extends JFrame {
         {
             jPanel1.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Dienas p\u0113c atne\u0161an\u0101s", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
-            jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,jPanel1. getBorder( )) ); jPanel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
+            jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border
+            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog"
+            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,jPanel1. getBorder
+            ( )) ); jPanel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+            .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException
+            ( ); }} );
 
             //---- jButton1 ----
             jButton1.setText("MEKL\u0112T");
@@ -132,10 +132,7 @@ public class DayCount extends JFrame {
 
             //---- jButton2 ----
             jButton2.setText("ATPAKA\u013b");
-            jButton2.addActionListener(e -> {
-			jButton2ActionPerformed(e);
-			jButton2ActionPerformed(e);
-		});
+            jButton2.addActionListener(e -> jButton2ActionPerformed(e));
 
             //---- jLabel2 ----
             jLabel2.setText("Dienu skaits");

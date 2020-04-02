@@ -28,7 +28,6 @@ new FormModel {
 					name: "jButton2"
 					"text": "ATPAKAĻ"
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton2ActionPerformed", true ) )
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton2ActionPerformed", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "jLabel2"

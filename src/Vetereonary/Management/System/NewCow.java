@@ -27,7 +27,6 @@ public class NewCow extends javax.swing.JFrame {
         jTable1.setEnabled(false);
         
         try{
-            Class.forName("com.mysql.jdbc.Driver");	   
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/vetDB", "root", "");
             displaytable();
         }

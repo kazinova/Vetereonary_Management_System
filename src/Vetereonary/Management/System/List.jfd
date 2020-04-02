@@ -4,14 +4,14 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :::p, comp panel3:::p::p, space :::p, comp panel2:::p::p, space ::14:x}}"
-			"$verticalGroup": "par l {seq l {space :p:18:p, par l {comp panel3:::::x, seq {comp panel2:::p::p, space :0:0:x}}, space ::26:x}}"
+			"$horizontalGroup": "par l {seq l {space :::p, comp panel3:::p::p, space :::p, comp panel2:::p::p, space ::10:x}}"
+			"$verticalGroup": "par l {seq l {space :p:14:p, par l {comp panel3:::p::p, comp panel2:::p::p}, space ::31:x}}"
 		} ) {
 			name: "this"
 			"defaultCloseOperation": 3
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {seq t {space :::x, comp jScrollPane1:::p:537:p, space :::p}}"
-				"$verticalGroup": "par l {seq t {space ::37:x, comp jScrollPane1:::p:206:p, space :::p}}"
+				"$verticalGroup": "par l {seq {space :p:14:p, comp jScrollPane1::::189:x, space :::p}}"
 			} ) {
 				name: "panel2"
 				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 2, false )
@@ -66,38 +66,39 @@ new FormModel {
 							add( null )
 							add( null )
 						} )
+						"rowSelectionAllowed": false
+						"autoCreateRowSorter": true
 					} )
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space :::p, par t {comp button2:::p:90:p, comp button1:::p:90:p, par l:t {comp label1:::p:80:p, comp list1:::p:88:p}}, space ::37:x}}"
-				"$verticalGroup": "par l {seq l {comp label1:::p:23:p, space :::p, comp list1:::p:128:p, space s:::p, comp button1:::p::p, space u:::p, comp button2:::p::p, space :0:0:x}}"
+				"$horizontalGroup": "par l {seq {space :::p, par l {seq l {space :p:2:p, comp label1:::p:80:p}, comp scrollPane1::l:p:100:p, comp button2::l:p:90:p}, space ::35:x}}"
+				"$verticalGroup": "par l {seq l {comp label1:::p:23:p, space :::p, comp scrollPane1:::p:100:p, space :::x, comp button2:::p::p, space :p:18:p}}"
 			} ) {
 				name: "panel3"
-				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 2, false )
+				"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 2, false ), "Saraksts", 4, 0, new java.awt.Font( "Tahoma", 0, 24 ), sfield java.awt.Color black )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
 					"text": "Grupa:"
-				} )
-				add( new FormComponent( "javax.swing.JList" ) {
-					name: "list1"
-					"selectionMode": 0
-					addEvent( new FormEvent( "javax.swing.event.ListSelectionListener", "valueChanged", "list1ValueChanged", true ) )
-				} )
-				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "button1"
-					"text": "VISAS"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button2"
 					"text": "ATPAKAĻ"
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
 				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JList" ) {
+						name: "list1"
+						"selectionMode": 0
+						"visibleRowCount": 2
+						addEvent( new FormEvent( "javax.swing.event.ListSelectionListener", "valueChanged", "list1ValueChanged", true ) )
+					} )
+				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"size": new java.awt.Dimension( 710, 325 )
-			"location": new java.awt.Point( 0, 30 )
+			"size": new java.awt.Dimension( 730, 290 )
+			"location": new java.awt.Point( 0, 40 )
 		} )
 	}
 }

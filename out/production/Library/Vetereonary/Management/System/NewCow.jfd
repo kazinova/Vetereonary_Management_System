@@ -45,14 +45,14 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "jLabel4"
-					"text": "Dzimšanas datums"
+					"text": "Dzimšanas datums (\"yyyy-mm-dd\")"
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "jTextField3"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "jLabel2"
-					"text": "Numurs"
+					"text": "Numurs (\"####\")"
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {

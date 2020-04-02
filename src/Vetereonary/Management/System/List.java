@@ -56,7 +56,7 @@ public class List extends JFrame {
         try{
             PreparedStatement ps = c.prepareStatement("select DISTINCT grupa from govis ORDER BY grupa;");
             ResultSet set = ps.executeQuery();
-
+            model.addElement("Visas");
             while (set.next()) //go through each row that your query returns
             {
                 String ItemList2 = set.getString("grupa"); //get the element in column "item_code"
@@ -67,6 +67,7 @@ public class List extends JFrame {
         catch(Exception e){e.printStackTrace();}
 
     }
+
 
     private void jTextField4ActionPerformed(ActionEvent e) {
         // TODO add your code here
@@ -81,18 +82,25 @@ public class List extends JFrame {
     }
 
     private void list1ValueChanged(ListSelectionEvent e) {
+        Object item= list1.getSelectedValue();
+        if(item.toString()=="Visas"){
+            try{
+                PreparedStatement ps = c.prepareStatement("select * from govis;");
+                ResultSet set = ps.executeQuery();
+
+                jTable1.setModel(DbUtils.resultSetToTableModel(set));
+            }
+            catch(Exception a){a.printStackTrace();}
+        }
+        else{
         try{
-            Object item= list1.getSelectedValue();
-            String item2= item.toString();
-            int grupa = Integer.parseInt(item2);
-            PreparedStatement ps = c.prepareStatement("select * from govis where grupa=?;");
-            ps.setInt(1,grupa);
+            PreparedStatement ps = c.prepareStatement("select * from govis where grupa="+item.toString()+";");
             ResultSet set = ps.executeQuery();
 
             jTable1.setModel(DbUtils.resultSetToTableModel(set));
         }
         catch(Exception a){a.printStackTrace();}
-    }
+    }}
 
     private void button1ActionPerformed(ActionEvent e) {
         list1.clearSelection();
@@ -105,6 +113,7 @@ public class List extends JFrame {
         this.dispose();
     }
 
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Jane Doe
@@ -113,9 +122,9 @@ public class List extends JFrame {
         jTable1 = new JTable();
         panel3 = new JPanel();
         label1 = new JLabel();
-        list1 = new JList();
-        button1 = new JButton();
         button2 = new JButton();
+        scrollPane1 = new JScrollPane();
+        list1 = new JList();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -124,12 +133,13 @@ public class List extends JFrame {
         //======== panel2 ========
         {
             panel2.setBorder(new LineBorder(Color.black, 2));
-            panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,panel2. getBorder( )) ); panel2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            panel2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
+            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax
+            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+            .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),panel2. getBorder()));panel2. addPropertyChangeListener(new java.beans.
+            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".
+            equals(e.getPropertyName()))throw new RuntimeException();}});
 
             //======== jScrollPane1 ========
             {
@@ -147,6 +157,8 @@ public class List extends JFrame {
                         "Title 1", "Title 2", "Title 3", "Title 4"
                     }
                 ));
+                jTable1.setRowSelectionAllowed(false);
+                jTable1.setAutoCreateRowSorter(true);
                 jScrollPane1.setViewportView(jTable1);
             }
 
@@ -161,31 +173,34 @@ public class List extends JFrame {
             );
             panel2Layout.setVerticalGroup(
                 panel2Layout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-                        .addContainerGap(37, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                         .addContainerGap())
             );
         }
 
         //======== panel3 ========
         {
-            panel3.setBorder(new LineBorder(Color.black, 2));
+            panel3.setBorder(new TitledBorder(new LineBorder(Color.black, 2), "Saraksts", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
+                new Font("Tahoma", Font.PLAIN, 24), Color.black));
 
             //---- label1 ----
             label1.setText("Grupa:");
 
-            //---- list1 ----
-            list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            list1.addListSelectionListener(e -> list1ValueChanged(e));
-
-            //---- button1 ----
-            button1.setText("VISAS");
-            button1.addActionListener(e -> button1ActionPerformed(e));
-
             //---- button2 ----
             button2.setText("ATPAKA\u013b");
             button2.addActionListener(e -> button2ActionPerformed(e));
+
+            //======== scrollPane1 ========
+            {
+
+                //---- list1 ----
+                list1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                list1.setVisibleRowCount(2);
+                list1.addListSelectionListener(e -> list1ValueChanged(e));
+                scrollPane1.setViewportView(list1);
+            }
 
             GroupLayout panel3Layout = new GroupLayout(panel3);
             panel3.setLayout(panel3Layout);
@@ -193,25 +208,23 @@ public class List extends JFrame {
                 panel3Layout.createParallelGroup()
                     .addGroup(panel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panel3Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(button2, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button1, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panel3Layout.createParallelGroup()
-                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(list1, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(37, Short.MAX_VALUE))
+                        .addGroup(panel3Layout.createParallelGroup()
+                            .addGroup(panel3Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(35, Short.MAX_VALUE))
             );
             panel3Layout.setVerticalGroup(
                 panel3Layout.createParallelGroup()
                     .addGroup(panel3Layout.createSequentialGroup()
                         .addComponent(label1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(list1, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(button1)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(button2)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(18, 18, 18))
             );
         }
 
@@ -224,18 +237,16 @@ public class List extends JFrame {
                     .addComponent(panel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(panel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(14, Short.MAX_VALUE))
+                    .addContainerGap(10, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(18, 18, 18)
+                    .addGap(14, 14, 14)
                     .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(panel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(panel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE)))
-                    .addContainerGap(26, Short.MAX_VALUE))
+                        .addComponent(panel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(31, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -249,9 +260,9 @@ public class List extends JFrame {
     private JTable jTable1;
     private JPanel panel3;
     private JLabel label1;
-    private JList list1;
-    private JButton button1;
     private JButton button2;
+    private JScrollPane scrollPane1;
+    private JList list1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     public static void main(String args[]) {
 

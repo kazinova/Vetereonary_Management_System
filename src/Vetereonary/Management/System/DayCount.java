@@ -1,5 +1,5 @@
 /*
- * Created by JFormDesigner on Wed Apr 01 16:41:29 EEST 2020
+ * Created by JFormDesigner on Thu Apr 02 13:38:18 EEST 2020
  */
 
 package Vetereonary.Management.System;
@@ -17,66 +17,76 @@ import java.sql.*;
 /**
  * @author Jane Doe
  */
-public class Search extends javax.swing.JFrame {
-    Connection c;
-    public Search() {
-
+public class DayCount extends JFrame {
+    static Connection c;
+    public DayCount() {
         initComponents();
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        DefaultComboBoxModel mode2 = new DefaultComboBoxModel();
+        mode2.addElement("8");
+        mode2.addElement("30");
+        comboBox2.setModel(mode2);
         setTitle("Vetereonary Management  System");
         setResizable(false);
         setLocationRelativeTo(null);
-        jTable1.setEnabled(false);
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/vetDB", "root", "");
-
         }
         catch(Exception e){e.printStackTrace();}
-
         try{
-            PreparedStatement ps = c.prepareStatement("SELECT * FROM govis;");
+            PreparedStatement ps = c.prepareStatement("select DISTINCT grupa from govis ORDER BY grupa;");
             ResultSet set = ps.executeQuery();
-            ResultSetMetaData rsMetaData = ps.getMetaData();
-            int numberOfColumns = rsMetaData.getColumnCount();
-            for (int i = 1; i < numberOfColumns + 1; i++){
-
-                String  comboBox1= rsMetaData.getColumnName(i)  ; //get the element in column "item_code"
-                model.addElement(comboBox1); //add each item to the model
+            model.addElement("Visas");
+            while (set.next()) //go through each row that your query returns
+            {
+                String ItemList2 = set.getString("grupa"); //get the element in column "item_code"
+                model.addElement(ItemList2); //add each item to the model
             }
-
-//            }
             comboBox1.setModel(model);
         }
         catch(Exception e){e.printStackTrace();}
+
+
     }
+    private void displaytable(){
+
+        String grupa;
+        if(comboBox1.getSelectedItem().toString()=="Visas") {
+            grupa="Grupa";
+        }
+        else{
+            grupa=comboBox1.getSelectedItem().toString();
+        }
+        if(comboBox2.getSelectedItem().toString()=="8"){
+            try {
+                PreparedStatement ps = c.prepareStatement("SELECT* from govis WHERE DATEDIFF(CURRENT_DATE,Atnešanās_datums)>=6 AND DATEDIFF(CURRENT_DATE,Atnešanās_datums)<=10 AND Grupa="+grupa+";");
+                ResultSet set = ps.executeQuery();
+
+                jTable1.setModel(DbUtils.resultSetToTableModel(set));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            try {
+                PreparedStatement ps = c.prepareStatement("SELECT* from govis WHERE DATEDIFF(CURRENT_DATE,Atnešanās_datums)>=28 AND DATEDIFF(CURRENT_DATE,Atnešanās_datums)<=32 AND Grupa="+grupa+";");
+                ResultSet set = ps.executeQuery();
+
+                jTable1.setModel(DbUtils.resultSetToTableModel(set));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
 
 
-    private void jTextField4ActionPerformed(ActionEvent e) {
-        // TODO add your code here
     }
 
     private void jButton1ActionPerformed(ActionEvent e) {
-
-        if ( jTextField2.getText().isEmpty()){
-            JOptionPane.showMessageDialog(new JFrame(), "Nav aizpildīta meklēšanas aile.", "Message" , JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
-
-            try {
-                PreparedStatement ps = c.prepareStatement("select * from govis where "+ comboBox1.getSelectedItem().toString()+"=?");
-                ps.setString(1, jTextField2.getText());
-                ResultSet set = ps.executeQuery();
-                jTable1.setModel(DbUtils.resultSetToTableModel(set));
-            }catch(Exception a) {
-                a.printStackTrace();
-                JOptionPane.showMessageDialog(new JFrame(), "Nav pareizi aizpildīti lauki!", "Message" , JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
+        displaytable();
     }
-
 
     private void jButton2ActionPerformed(ActionEvent e) {
         Home home = new Home();
@@ -91,9 +101,9 @@ public class Search extends javax.swing.JFrame {
         jButton1 = new JButton();
         jLabel1 = new JLabel();
         jButton2 = new JButton();
-        jTextField2 = new JTextField();
         jLabel2 = new JLabel();
         comboBox1 = new JComboBox();
+        comboBox2 = new JComboBox();
         jPanel2 = new JPanel();
         jScrollPane1 = new JScrollPane();
         jTable1 = new JTable();
@@ -104,13 +114,13 @@ public class Search extends javax.swing.JFrame {
 
         //======== jPanel1 ========
         {
-            jPanel1.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Mekl\u0113t govi", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
+            jPanel1.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Dienas p\u0113c atne\u0161an\u0101s", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
             jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ),
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
             java. awt. Color. red) ,jPanel1. getBorder( )) ); jPanel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () ))
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
             throw new RuntimeException( ); }} );
 
             //---- jButton1 ----
@@ -118,14 +128,17 @@ public class Search extends javax.swing.JFrame {
             jButton1.addActionListener(e -> jButton1ActionPerformed(e));
 
             //---- jLabel1 ----
-            jLabel1.setText("Mekl\u0113t p\u0113c");
+            jLabel1.setText("Grupa:");
 
             //---- jButton2 ----
             jButton2.setText("ATPAKA\u013b");
-            jButton2.addActionListener(e -> jButton2ActionPerformed(e));
+            jButton2.addActionListener(e -> {
+			jButton2ActionPerformed(e);
+			jButton2ActionPerformed(e);
+		});
 
             //---- jLabel2 ----
-            jLabel2.setText("Atsl\u0113ga");
+            jLabel2.setText("Dienu skaits");
 
             GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
@@ -146,7 +159,7 @@ public class Search extends javax.swing.JFrame {
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                     .addComponent(comboBox1, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                                    .addComponent(jTextField2, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))))
+                                    .addComponent(comboBox2, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))))
                         .addGap(27, 27, 27))
             );
             jPanel1Layout.setVerticalGroup(
@@ -157,14 +170,14 @@ public class Search extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup()
                             .addComponent(jLabel2)
-                            .addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(comboBox2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
                             .addComponent(jButton2))
-                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(96, Short.MAX_VALUE))
             );
         }
 
@@ -214,9 +227,9 @@ public class Search extends javax.swing.JFrame {
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(89, Short.MAX_VALUE)
+                    .addContainerGap(82, Short.MAX_VALUE)
                     .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addGap(36, 36, 36)
+                    .addGap(37, 37, 37)
                     .addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())
         );
@@ -224,9 +237,9 @@ public class Search extends javax.swing.JFrame {
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
                     .addGap(48, 48, 48)
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap(107, Short.MAX_VALUE))
         );
         pack();
@@ -240,21 +253,44 @@ public class Search extends javax.swing.JFrame {
     private JButton jButton1;
     private JLabel jLabel1;
     private JButton jButton2;
-    private JTextField jTextField2;
     private JLabel jLabel2;
     private JComboBox comboBox1;
+    private JComboBox comboBox2;
     private JPanel jPanel2;
     private JScrollPane jScrollPane1;
     private JTable jTable1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-
     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Metal".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Search().setVisible(true);
-
+                new DayCount().setVisible(true);
             }
         });
+
     }
+
 }

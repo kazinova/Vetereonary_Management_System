@@ -4,15 +4,15 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:100:p, par l:::p {comp jLabel1:::::x, seq {par l {seq l {space :p:175:p, par l {comp jButton2:::p:115:p, comp jButton5:::p:115:p, comp jButton8::l:p:115:p}}, comp jButton1::l:p:115:p, comp jButton4::l:p:115:p, comp jButton7::l:p:115:p}, space :p:60:p, par t {comp jButton3:::p:115:p, comp jButton6:::p:115:p, comp jButton9:::p:115:p}}}, space :::p}}"
-			"$verticalGroup": "par l {seq l {space :p:50:p, comp jLabel1:::p::p, space s:::p, par b {comp jButton1::b:p:45:p, comp jButton2::b:p:45:p, comp jButton3::b:p:45:p}, space :p:34:p, par b {comp jButton4::b:p:45:p, comp jButton5::b:p:45:p, comp jButton6::b:p:45:p}, space :p:36:p, par b {comp jButton7::b:p:45:p, comp jButton8::b:p:45:p, comp jButton9::b:p:45:p}, space :p:120:p}}"
+			"$horizontalGroup": "par l {seq {space :p:100:p, par l:::p {comp jLabel1:::::x, seq {par l {comp jButton1:::p:115:p, seq {par l {comp jButton7:::p:115:p, comp jButton4:::p:115:p}, space :p:60:p, par l {comp jButton3:::p:115:p, comp jButton5:::p:115:p, comp jButton8:::p:115:p}}}, par l {seq {space :p:60:p, comp jButton6:::p:115:p}, seq t {space :::x, par l {comp jButton9::t:p:115:p, comp jButton2::t:p:115:p}}}}}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :p:50:p, comp jLabel1:::p::p, space s:::p, par b {comp jButton1::b:p:45:p, comp jButton8::b:p:45:p, comp jButton9::b:p:45:p}, space :p:34:p, par b {comp jButton5::b:p:45:p, comp jButton6::b:p:45:p, comp jButton7::b:p:45:p}, space :p:36:p, par b {comp jButton3::b:p:45:p, comp jButton2::b:p:45:p, comp jButton4::b:p:45:p}, space :p:120:p}}"
 		} ) {
 			name: "this"
 			"defaultCloseOperation": 3
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "jLabel1"
 				"font": new java.awt.Font( "Times New Roman", 1, 30 )
-				"text": "     Library Management System"
+				"text": "Vetereonary Management  System"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jButton1"
@@ -41,7 +41,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "jButton5"
 				"font": new java.awt.Font( "Times New Roman", 1, 14 )
-				"text": "Return Book"
+				"text": "Atnešanās "
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton5ActionPerformed", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -70,7 +70,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"size": new java.awt.Dimension( 670, 460 )
-			"location": new java.awt.Point( 175, 65 )
+			"location": new java.awt.Point( 25, 5 )
 		} )
 	}
 }

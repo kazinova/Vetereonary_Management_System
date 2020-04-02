@@ -61,12 +61,12 @@ public class NewCow extends javax.swing.JFrame {
         {
             jPanel1.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Pievienot govi", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
-            jPanel1.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border
-            .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax
-            . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,
-            12 ) ,java . awt. Color .red ) ,jPanel1. getBorder () ) ); jPanel1. addPropertyChangeListener( new java. beans
-            .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e.
-            getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,jPanel1. getBorder( )) ); jPanel1. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
 
             //---- jTextField4 ----
             jTextField4.addActionListener(e -> jTextField4ActionPerformed(e));
@@ -86,10 +86,10 @@ public class NewCow extends javax.swing.JFrame {
             jLabel3.setText("Grupa");
 
             //---- jLabel4 ----
-            jLabel4.setText("Dzim\u0161anas datums");
+            jLabel4.setText("Dzim\u0161anas datums (\"yyyy-mm-dd\")");
 
             //---- jLabel2 ----
-            jLabel2.setText("Numurs");
+            jLabel2.setText("Numurs (\"####\")");
 
             GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
@@ -222,15 +222,15 @@ public class NewCow extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        if ( jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty() || jTextField3.getText().isEmpty() || jTextField4.getText().isEmpty() || jTextField4.getText().isEmpty() ){
-            JOptionPane.showMessageDialog(new JFrame(), "Aizpildiet visus laukus!.", "Message" , JOptionPane.INFORMATION_MESSAGE);
+        if ( jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty() || jTextField3.getText().isEmpty() || jTextField4.getText().isEmpty() || jTextField4.getText().isEmpty() || jTextField2.getText().length()!=4){
+            JOptionPane.showMessageDialog(new JFrame(), "Nav pareizi aizpildīti lauki!.", "Message" , JOptionPane.INFORMATION_MESSAGE);
         }
         else{
             try{
                 String name = jTextField1.getText();
                 int number = Integer.parseInt( jTextField2.getText() );
                 int group = Integer.parseInt( jTextField3.getText() );
-                Date birth=new SimpleDateFormat("dd/mm/yyyy").parse(jTextField4.getText());
+                Date birth=new SimpleDateFormat("yyyy-mm-dd").parse(jTextField4.getText());
                 java.sql.Date birth2 = new java.sql.Date(birth.getTime());
 
 
@@ -239,7 +239,7 @@ public class NewCow extends javax.swing.JFrame {
                 
                 displaytable();
                 
-                JOptionPane.showMessageDialog(new JFrame(), "Book Added Successfully !", "Message" , JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "Govs ir pievienota!", "Message" , JOptionPane.INFORMATION_MESSAGE);
                 
                 jTextField1.setText("");
                 jTextField2.setText("");

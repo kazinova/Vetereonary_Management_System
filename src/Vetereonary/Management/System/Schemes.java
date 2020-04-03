@@ -98,7 +98,6 @@ public class Schemes extends JFrame {
         jScrollPane2 = new JScrollPane();
         jTable2 = new JTable();
         button2 = new JButton();
-        button1 = new JButton();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -108,12 +107,13 @@ public class Schemes extends JFrame {
         {
             panel2.setBorder(new TitledBorder(new LineBorder(Color.black, 2), "Sh\u0113ma", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
-            panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
-            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-            .BOLD ,12 ), java. awt. Color. red) ,panel2. getBorder( )) ); panel2. addPropertyChangeListener (
-            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
-            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            panel2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
+            .border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder
+            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.
+            awt.Font.BOLD,12),java.awt.Color.red),panel2. getBorder()))
+            ;panel2. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}})
+            ;
 
             //======== jScrollPane1 ========
             {
@@ -174,7 +174,7 @@ public class Schemes extends JFrame {
                     .addGroup(panel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(34, Short.MAX_VALUE))
+                        .addContainerGap(38, Short.MAX_VALUE))
             );
             panel3Layout.setVerticalGroup(
                 panel3Layout.createParallelGroup()
@@ -220,17 +220,13 @@ public class Schemes extends JFrame {
                     .addGroup(panel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 324, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(26, Short.MAX_VALUE))
+                        .addContainerGap(31, Short.MAX_VALUE))
             );
         }
 
         //---- button2 ----
         button2.setText("ATPAKA\u013b");
         button2.addActionListener(e -> button2ActionPerformed(e));
-
-        //---- button1 ----
-        button1.setText("PIEVIENOT GOVI");
-        button1.addActionListener(e -> button1ActionPerformed(e));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
@@ -243,14 +239,12 @@ public class Schemes extends JFrame {
                             .addComponent(panel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addGap(35, 35, 35)
-                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                .addComponent(button2, GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                                .addComponent(button1, GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))))
+                            .addComponent(button2, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)))
                     .addGap(51, 51, 51)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                         .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panel4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(18, Short.MAX_VALUE))
+                    .addContainerGap(6, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -265,8 +259,6 @@ public class Schemes extends JFrame {
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addComponent(panel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(button1)
-                            .addGap(32, 32, 32)
                             .addComponent(button2)
                             .addGap(29, 29, 29))))
         );
@@ -287,7 +279,6 @@ public class Schemes extends JFrame {
     private JScrollPane jScrollPane2;
     private JTable jTable2;
     private JButton button2;
-    private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

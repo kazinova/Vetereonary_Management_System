@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {par l {seq l {space :::p, comp panel3:::p::p}, seq l {space :p:35:p, par l:::p {comp button2::::113:x, comp button1::::113:x}}}, space :p:51:p, par l:::p {comp panel2:::::x, comp panel4:::::x}, space ::18:x}}"
-			"$verticalGroup": "par l {seq l {space :p:14:p, par l {seq {comp panel2:::p::p, space :::p, comp panel4:::p::p, space :::x}, seq {comp panel3:::p::p, space :::x, comp button1:::p::p, space :p:32:p, comp button2:::p::p, space :p:29:p}}}}"
+			"$horizontalGroup": "par l {seq l {par l {seq l {space :::p, comp panel3:::p::p}, seq l {space :p:35:p, comp button2:::p:113:p}}, space :p:51:p, par l:::p {comp panel2:::::x, comp panel4:::::x}, space ::6:x}}"
+			"$verticalGroup": "par l {seq l {space :p:14:p, par l {seq {comp panel2:::p::p, space :::p, comp panel4:::p::p, space :::x}, seq {comp panel3:::p::p, space :::x, comp button2:::p::p, space :p:29:p}}}}"
 		} ) {
 			name: "this"
 			"defaultCloseOperation": 3
@@ -55,7 +55,7 @@ new FormModel {
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {space :::p, comp scrollPane1:::p:100:p, space ::34:x}}"
+				"$horizontalGroup": "par l {seq {space :::p, comp scrollPane1:::p:100:p, space ::38:x}}"
 				"$verticalGroup": "par l {seq l {comp scrollPane1:::p:100:p, space :::x}}"
 			} ) {
 				name: "panel3"
@@ -72,7 +72,7 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {seq {space :::p, comp jScrollPane2:::::x, space :p:26:p}}"
-				"$verticalGroup": "par l {seq l {space :::p, comp jScrollPane2:::p:324:p, space ::26:x}}"
+				"$verticalGroup": "par l {seq l {space :::p, comp jScrollPane2:::p:324:p, space ::31:x}}"
 			} ) {
 				name: "panel4"
 				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 2, false )
@@ -91,11 +91,6 @@ new FormModel {
 				name: "button2"
 				"text": "ATPAKAĻ"
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
-			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
-				"text": "PIEVIENOT GOVI"
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"size": new java.awt.Dimension( 790, 510 )

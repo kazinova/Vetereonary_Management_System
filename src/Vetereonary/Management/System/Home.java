@@ -61,7 +61,7 @@ public class Home extends javax.swing.JFrame {
 
         //---- jButton2 ----
         jButton2.setFont(new Font("Times New Roman", Font.BOLD, 14));
-        jButton2.setText("New Student");
+        jButton2.setText("Pievienot Govi Sh\u0113mai");
         jButton2.addActionListener(e -> jButton2ActionPerformed(e));
 
         //---- jButton3 ----
@@ -105,28 +105,32 @@ public class Home extends javax.swing.JFrame {
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
                     .addGap(100, 100, 100)
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                    .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-                            .addGap(60, 60, 60)
-                            .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                            .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 465, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(103, Short.MAX_VALUE))
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGroup(contentPaneLayout.createParallelGroup()
-                                .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                 .addGroup(contentPaneLayout.createSequentialGroup()
-                                    .addComponent(jButton7, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
                                     .addGap(60, 60, 60)
+                                    .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                                    .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(GroupLayout.Alignment.LEADING, contentPaneLayout.createSequentialGroup()
                                     .addGroup(contentPaneLayout.createParallelGroup()
-                                        .addComponent(jButton5, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton8, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))))
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                            .addGroup(contentPaneLayout.createParallelGroup()
-                                .addComponent(jButton9, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton6, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))))
-                    .addContainerGap(103, Short.MAX_VALUE))
+                                        .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                            .addComponent(jButton7, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                                            .addGap(60, 60, 60)
+                                            .addGroup(contentPaneLayout.createParallelGroup()
+                                                .addComponent(jButton5, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jButton8, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                                    .addGroup(contentPaneLayout.createParallelGroup()
+                                        .addComponent(jButton9, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton6))))
+                            .addContainerGap(81, Short.MAX_VALUE))))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -190,9 +194,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        NewStudent newStudent = new NewStudent();
-        newStudent.setVisible(true);
+
+        addCowScheme addCowScheme=new addCowScheme();
+        addCowScheme.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

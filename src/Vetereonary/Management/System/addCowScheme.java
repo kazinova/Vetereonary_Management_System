@@ -63,12 +63,15 @@ public class addCowScheme extends JFrame {
     }
 
     private void button2ActionPerformed(ActionEvent e) {
+        Home home = new Home();
+        home.setVisible(true);
         this.dispose();
     }
 
     private void list1ValueChanged(ListSelectionEvent e) {
         if (list1.getSelectedValue().toString().isEmpty()) {
         } else {
+            JOptionPane.showMessageDialog(new JFrame(), "Nav izvēlēta shēma!", "Message", JOptionPane.INFORMATION_MESSAGE);
 
             try {
                 PreparedStatement ps = c.prepareStatement("select * from "+list1.getSelectedValue().toString()+";");
@@ -81,17 +84,24 @@ public class addCowScheme extends JFrame {
     }
 
     private void button1ActionPerformed(ActionEvent e) {
-        if(jTable2.getSelectedRow()!=-1){
+        if(jTable2.getSelectedRow()==-1) {
+            JOptionPane.showMessageDialog(new JFrame(), "Nav izvēlētas govs(is)!", "Message", JOptionPane.INFORMATION_MESSAGE);
+        }
+            else{
             for(int i=0; i<jTable2.getSelectedRowCount();i++){
                 try {
                     PreparedStatement ps = c.prepareStatement("update govis set Shēma='"+jTable1.getValueAt(0,0).toString()+"' where Numurs="+jTable2.getValueAt(i,1).toString()+";");
                     ps.executeUpdate();
-                } catch (Exception a) {
+                }
+                catch (Exception a) {
                     a.printStackTrace();
                 }
             }
+            JOptionPane.showMessageDialog(new JFrame(), "Govis ir pievienotas shēmai!", "Message", JOptionPane.INFORMATION_MESSAGE);
+
         }
-    }
+        }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents

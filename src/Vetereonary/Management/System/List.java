@@ -45,7 +45,7 @@ public class List extends JFrame {
         DefaultListModel model = new DefaultListModel();
 
                 try{
-                    PreparedStatement ps = c.prepareStatement("select * from govis;");
+                        PreparedStatement ps = c.prepareStatement("select * from govis;");
                     ResultSet set = ps.executeQuery();
 
                     jTable1.setModel(DbUtils.resultSetToTableModel(set));
@@ -83,7 +83,7 @@ public class List extends JFrame {
 
     private void list1ValueChanged(ListSelectionEvent e) {
         Object item= list1.getSelectedValue();
-        if(item.toString()=="Visas"){
+        if(item.toString().equals("Visas")){
             try{
                 PreparedStatement ps = c.prepareStatement("select * from govis;");
                 ResultSet set = ps.executeQuery();
@@ -132,13 +132,12 @@ public class List extends JFrame {
         //======== panel2 ========
         {
             panel2.setBorder(new LineBorder(Color.black, 2));
-            panel2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),panel2. getBorder()));panel2. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            panel2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+            EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+            . border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,
+            java . awt. Color .red ) ,panel2. getBorder () ) ); panel2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )
+            throw new RuntimeException( ) ;} } );
 
             //======== jScrollPane1 ========
             {

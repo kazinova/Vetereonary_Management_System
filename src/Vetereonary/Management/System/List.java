@@ -42,10 +42,10 @@ public class List extends JFrame {
     }
 
     private void displaytable(){
-        DefaultListModel model = new DefaultListModel();
+        DefaultListModel model2 = new DefaultListModel();
 
                 try{
-                        PreparedStatement ps = c.prepareStatement("select * from govis;");
+                    PreparedStatement ps = c.prepareStatement("select * from govis;");
                     ResultSet set = ps.executeQuery();
 
                     jTable1.setModel(DbUtils.resultSetToTableModel(set));
@@ -56,13 +56,13 @@ public class List extends JFrame {
         try{
             PreparedStatement ps = c.prepareStatement("select DISTINCT grupa from govis ORDER BY grupa;");
             ResultSet set = ps.executeQuery();
-            model.addElement("Visas");
+            model2.addElement("Visas");
             while (set.next()) //go through each row that your query returns
             {
                 String ItemList2 = set.getString("grupa"); //get the element in column "item_code"
-                model.addElement(ItemList2); //add each item to the model
+                model2.addElement(ItemList2); //add each item to the model
             }
-            list1.setModel(model);
+            list1.setModel(model2);
         }
         catch(Exception e){e.printStackTrace();}
 
@@ -132,13 +132,12 @@ public class List extends JFrame {
         //======== panel2 ========
         {
             panel2.setBorder(new LineBorder(Color.black, 2));
-            panel2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),panel2. getBorder()));panel2. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            panel2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
+            ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
+            .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,panel2. getBorder () ) ); panel2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
+            propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+            ;} } );
 
             //======== jScrollPane1 ========
             {
@@ -158,6 +157,8 @@ public class List extends JFrame {
                 ));
                 jTable1.setRowSelectionAllowed(false);
                 jTable1.setAutoCreateRowSorter(true);
+                jTable1.setColumnSelectionAllowed(true);
+                jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 jScrollPane1.setViewportView(jTable1);
             }
 

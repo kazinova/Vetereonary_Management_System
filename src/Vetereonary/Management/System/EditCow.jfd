@@ -1,0 +1,83 @@
+JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.5" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[fill][fill]"
+			"$rowConstraints": "[][][]"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {par l {seq l {space :p:44:p, comp jButton1:::p:90:p, space :p:61:p, comp jButton2:::p:90:p, space :p:67:p, comp button2:::p:90:p, space :0:0:x}, seq {space :::p, par l {seq l {comp jLabel4:::p::p, space :::x, comp jTextField4:::p:197:p}, seq t {comp jLabel3:::p::p, space :::x, comp jTextField3:::p:197:p}, seq t {comp jLabel2:::p::p, space :::x, comp jTextField2:::p:197:p}}}, seq t {space :::p, par l {comp jLabel1::l:p::p, comp jLabel5::l:p::p}, space :::x, par l:::p {comp jTextField1::::197:x, comp textField1::::197:x}}, seq t {space :::x, comp button1:::p:80:p}}, space :::p}}"
+				"$verticalGroup": "par l {seq l {space :p:15:p, par b {comp jLabel5::b:p::p, comp textField1::b:p::p}, space :::p, comp button1:::p::p, space :::x, par l {comp jTextField1:::p::p, comp jLabel1:::p::p}, space u:::p, par b {comp jTextField2::b:p::p, comp jLabel2::b:p::p}, space s:::p, par b {comp jTextField3::b:p::p, comp jLabel3::b:p::p}, space s:::p, par b {comp jLabel4::b:p::p, comp jTextField4::b:p::p}, space s:::p, par b {comp jButton1::b:p::p, comp button2::b:p::p, comp jButton2::b:p::p}, space :::p}}"
+			} ) {
+				name: "jPanel1"
+				"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 2, true ), "Rediģēt govi", 4, 0, new java.awt.Font( "Tahoma", 0, 24 ), null )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "jTextField4"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jTextField4ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "jTextField1"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "jButton1"
+					"text": "REDIĢĒT"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton1ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel1"
+					"text": "Vārds"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "jButton2"
+					"text": "DZĒST"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton2ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "jTextField2"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel3"
+					"text": "Grupa"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel4"
+					"text": "Dzimšanas datums (\"yyyy-mm-dd\")"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "jTextField3"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel2"
+					"text": "Numurs (\"####\")"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel5"
+					"text": "Meklējamais numurs"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textField1"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": "ATRAST"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button2"
+					"text": "ATPAKAĻ"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 520, 380 )
+		} )
+	}
+}

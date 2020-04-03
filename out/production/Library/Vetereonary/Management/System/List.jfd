@@ -68,6 +68,8 @@ new FormModel {
 						} )
 						"rowSelectionAllowed": false
 						"autoCreateRowSorter": true
+						"columnSelectionAllowed": true
+						"selectionMode": 0
 					} )
 				} )
 			} )

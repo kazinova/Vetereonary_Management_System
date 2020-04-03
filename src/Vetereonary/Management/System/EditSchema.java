@@ -49,6 +49,7 @@ public class EditSchema extends JFrame {
                 model.addElement(comboBox2); //add each item to the model
             }
             comboBox2.setModel(model);
+
         }
         catch(Exception e){e.printStackTrace();}
 
@@ -64,6 +65,7 @@ public class EditSchema extends JFrame {
 
                 String  comboBox1= rsMetaData.getColumnName(i)  ; //get the element in column "item_code"
                 mode2.addElement(comboBox1); //add each item to the model
+
             }
 
 //            }
@@ -74,6 +76,10 @@ public class EditSchema extends JFrame {
     }
 
     private void displayFiels(){
+
+        if(comboBox2.getSelectedItem().toString().isEmpty() || comboBox3.getSelectedItem().toString().isEmpty()){
+        }
+        else{
         try{
             ResultSet rs;
             PreparedStatement ps = c.prepareStatement("select "+comboBox3.getSelectedItem().toString()+" from "+comboBox2.getSelectedItem().toString()+" where Numurs = 1; ");
@@ -90,7 +96,7 @@ public class EditSchema extends JFrame {
             }
 
         } catch(Exception a) {a.printStackTrace();}
-    }
+    }}
     private void jTextField4ActionPerformed(ActionEvent e) {
         // TODO add your code here
     }
@@ -140,6 +146,8 @@ public class EditSchema extends JFrame {
             jTextField4.setText("");
             displayBox1();
             displayBox2();
+            JOptionPane.showMessageDialog(new JFrame(), "Shēma ir dzēsta!", "Message" , JOptionPane.INFORMATION_MESSAGE);
+
         }
         catch (Exception a){a.printStackTrace();}
     }
@@ -148,7 +156,9 @@ public class EditSchema extends JFrame {
     }
 
     private void button2ActionPerformed(ActionEvent e) {
-        // TODO add your code here
+        Home home = new Home();
+        home.setVisible(true);
+        this.dispose();
     }
 
     private void comboBox2ItemStateChanged(ItemEvent e) {
@@ -164,6 +174,9 @@ public class EditSchema extends JFrame {
             jTextField3.setText("");
             jTextField4.setText("");
             displayBox2();
+            displayFiels();
+            JOptionPane.showMessageDialog(new JFrame(), "Elements ir dzēsts!", "Message" , JOptionPane.INFORMATION_MESSAGE);
+
         }
         catch (Exception a){a.printStackTrace();}
 
@@ -189,7 +202,6 @@ public class EditSchema extends JFrame {
         comboBox2 = new JComboBox();
         comboBox3 = new JComboBox();
         label1 = new JLabel();
-        button1 = new JButton();
         button3 = new JButton();
         button2 = new JButton();
 
@@ -211,13 +223,12 @@ public class EditSchema extends JFrame {
         {
             jPanel1.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Redi\u0123\u0113t sh\u0113mu", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
-            jPanel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),jPanel1. getBorder()));jPanel1. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,jPanel1. getBorder( )) ); jPanel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
 
             //---- jTextField4 ----
             jTextField4.addActionListener(e -> jTextField4ActionPerformed(e));
@@ -227,17 +238,17 @@ public class EditSchema extends JFrame {
             jButton1.addActionListener(e -> jButton1ActionPerformed(e));
 
             //---- jLabel1 ----
-            jLabel1.setText("Medikaments");
+            jLabel1.setText("Elements");
 
             //---- jButton2 ----
             jButton2.setText("DZ\u0112ST SH\u0112MU");
             jButton2.addActionListener(e -> jButton2ActionPerformed(e));
 
             //---- jLabel3 ----
-            jLabel3.setText("Labot medikamentu");
+            jLabel3.setText("Elementa nosaukums");
 
             //---- jLabel2 ----
-            jLabel2.setText("Labot nosaukumu");
+            jLabel2.setText("Sh\u0113mas nosaukums");
 
             //---- jLabel5 ----
             jLabel5.setText("Nosaukums");
@@ -249,14 +260,10 @@ public class EditSchema extends JFrame {
             comboBox3.addItemListener(e -> comboBox3ItemStateChanged(e));
 
             //---- label1 ----
-            label1.setText("Labot datumu");
-
-            //---- button1 ----
-            button1.setText("ATRAST");
-            button1.addActionListener(e -> button1ActionPerformed(e));
+            label1.setText("Labot datumu (yyyy-mm-dd)");
 
             //---- button3 ----
-            button3.setText("DZ\u0112ST MEDIKAMENTU");
+            button3.setText("DZ\u0112ST ELEMENTU");
             button3.addActionListener(e -> button3ActionPerformed(e));
 
             GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
@@ -265,31 +272,29 @@ public class EditSchema extends JFrame {
                 jPanel1Layout.createParallelGroup()
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup()
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup()
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel1))
-                                .addGap(127, 127, 127)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(comboBox3)
-                                    .addComponent(comboBox2)
-                                    .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(button3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(button1, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup()
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(label1)
-                                    .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))
-                                .addGap(52, 52, 52)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4)
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField2, GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                            .addComponent(button3)
+                            .addGroup(jPanel1Layout.createParallelGroup()
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup()
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel1))
+                                    .addGap(127, 127, 127)
+                                    .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(comboBox3, GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                                        .addComponent(comboBox2)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup()
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3)
+                                        .addComponent(label1)
+                                        .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE))
+                                    .addGap(52, 52, 52)
+                                    .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton1, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField4)
+                                        .addComponent(jTextField3)
+                                        .addComponent(jTextField2, GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)))))
                         .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             jPanel1Layout.setVerticalGroup(
@@ -304,9 +309,7 @@ public class EditSchema extends JFrame {
                             .addComponent(jLabel1)
                             .addComponent(comboBox3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(button1)
-                            .addComponent(button3))
+                        .addComponent(button3)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -352,7 +355,6 @@ public class EditSchema extends JFrame {
     private JComboBox comboBox2;
     private JComboBox comboBox3;
     private JLabel label1;
-    private JButton button1;
     private JButton button3;
     private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables

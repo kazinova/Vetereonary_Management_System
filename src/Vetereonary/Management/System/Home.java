@@ -66,12 +66,12 @@ public class Home extends javax.swing.JFrame {
 
         //---- jButton3 ----
         jButton3.setFont(new Font("Times New Roman", Font.BOLD, 14));
-        jButton3.setText("Statistics");
+        jButton3.setText("Sh\u0113mas");
         jButton3.addActionListener(e -> jButton3ActionPerformed(e));
 
         //---- jButton4 ----
         jButton4.setFont(new Font("Times New Roman", Font.BOLD, 14));
-        jButton4.setText("Issue Book");
+        jButton4.setText("Redi\u0123\u0113t sh\u0113mu");
         jButton4.addActionListener(e -> jButton4ActionPerformed(e));
 
         //---- jButton5 ----
@@ -163,15 +163,15 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        Record record = new Record();
-        record.setVisible(true);
+        Schemes schemes=new Schemes();
+        schemes.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         
-        IssueBook issueBook = new IssueBook();
-        issueBook.setVisible(true);
+        EditSchema editSchema= new EditSchema();
+        editSchema.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 

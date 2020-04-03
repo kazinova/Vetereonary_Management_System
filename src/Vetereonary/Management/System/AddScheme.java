@@ -71,7 +71,7 @@ public class AddScheme extends JFrame {
         Date birth2 = a.getTime();
         PreparedStatement ps = c.prepareStatement("ALTER TABLE " + TextField1.getText() + " add " + TextField4.getText() + " Date");
         ps.executeUpdate();
-        ps = c.prepareStatement("UPDATE " + TextField1.getText() + " SET " + TextField4.getText() + "='" + format.format(birth2) + "' WHERE Numurs=1;");
+        ps = c.prepareStatement("UPDATE " + TextField1.getText() + " SET " + TextField4.getText() + "='" + format.format(birth2) + "' WHERE Nosaukums='"+TextField1.getText()+"';");
         ps.executeUpdate();
         displaytable();
     } catch (Exception a) {
@@ -103,9 +103,9 @@ public class AddScheme extends JFrame {
             JOptionPane.showMessageDialog(new JFrame(), "Nav pareizi aizpildīti lauki!", "Message", JOptionPane.INFORMATION_MESSAGE);
         } else {
             try {
-                PreparedStatement ps = c.prepareStatement("CREATE TABLE " + TextField1.getText() + "( Numurs int PRIMARY KEY AUTO_INCREMENT, " + TextField2.getText() + " Date);");
+                PreparedStatement ps = c.prepareStatement("CREATE TABLE " + TextField1.getText() + "(Nosaukums varchar(20), " + TextField2.getText() + " Date);");
                 ps.executeUpdate();
-                ps = c.prepareStatement("INSERT INTO " + TextField1.getText() + "(" + TextField2.getText() + ") VALUES('" + TextField3.getText() + "');");
+                ps = c.prepareStatement("INSERT INTO " + TextField1.getText() + "(" + TextField2.getText() + ", Nosaukums) VALUES('" + TextField3.getText() + "', '"+TextField1.getText()+"');");
                 ps.executeUpdate();
                 TextField1.setEditable(false);
                 TextField2.setEditable(false);
@@ -375,7 +375,7 @@ public class AddScheme extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddScheme().setVisible(true);
+                new addCowScheme().setVisible(true);
             }
         });
 

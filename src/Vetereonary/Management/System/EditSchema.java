@@ -82,7 +82,7 @@ public class EditSchema extends JFrame {
         else{
         try{
             ResultSet rs;
-            PreparedStatement ps = c.prepareStatement("select "+comboBox3.getSelectedItem().toString()+" from "+comboBox2.getSelectedItem().toString()+" where Numurs = 1; ");
+            PreparedStatement ps = c.prepareStatement("select "+comboBox3.getSelectedItem().toString()+" from "+comboBox2.getSelectedItem().toString()+" where Nosaukums ='"+comboBox2.getSelectedItem().toString()+"'; ");
             rs = ps.executeQuery();
 
             while(true){

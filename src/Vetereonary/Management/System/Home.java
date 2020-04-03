@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 public class Home extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(ActionEvent e) {
-        Edit editCow = new Edit();
+        EditCow editCow = new EditCow();
         editCow.setVisible(true);
         this.dispose();
     }
@@ -41,10 +41,10 @@ public class Home extends javax.swing.JFrame {
         jButton3 = new JButton();
         jButton4 = new JButton();
         jButton5 = new JButton();
-        jButton6 = new JButton();
         jButton7 = new JButton();
         jButton8 = new JButton();
         jButton9 = new JButton();
+        jButton6 = new JButton();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -79,11 +79,6 @@ public class Home extends javax.swing.JFrame {
         jButton5.setText("Atne\u0161an\u0101s ");
         jButton5.addActionListener(e -> jButton5ActionPerformed(e));
 
-        //---- jButton6 ----
-        jButton6.setFont(new Font("Times New Roman", Font.BOLD, 14));
-        jButton6.setText("Logout");
-        jButton6.addActionListener(e -> jButton6ActionPerformed(e));
-
         //---- jButton7 ----
         jButton7.setFont(new Font("Times New Roman", Font.BOLD, 14));
         jButton7.setText("Redi\u0123\u0113t Govi");
@@ -99,6 +94,11 @@ public class Home extends javax.swing.JFrame {
         jButton9.setText("Mekl\u0113t");
         jButton9.addActionListener(e -> jButton9ActionPerformed(e));
 
+        //---- jButton6 ----
+        jButton6.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        jButton6.setText("Pievienot Sh\u0113mu");
+        jButton6.addActionListener(e -> jButton6ActionPerformed(e));
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -106,29 +106,27 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(contentPaneLayout.createSequentialGroup()
                     .addGap(100, 100, 100)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                            .addGap(60, 60, 60)
+                            .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
                         .addGroup(contentPaneLayout.createSequentialGroup()
                             .addGroup(contentPaneLayout.createParallelGroup()
                                 .addComponent(jButton1, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
                                 .addGroup(contentPaneLayout.createSequentialGroup()
-                                    .addGroup(contentPaneLayout.createParallelGroup()
-                                        .addComponent(jButton7, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButton7, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
                                     .addGap(60, 60, 60)
                                     .addGroup(contentPaneLayout.createParallelGroup()
-                                        .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jButton5, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jButton8, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                             .addGroup(contentPaneLayout.createParallelGroup()
-                                .addGroup(contentPaneLayout.createSequentialGroup()
-                                    .addGap(60, 60, 60)
-                                    .addComponent(jButton6, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))
-                                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(contentPaneLayout.createParallelGroup()
-                                        .addComponent(jButton9, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton2, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))))))
-                    .addContainerGap())
+                                .addComponent(jButton9, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton6, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(103, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -143,14 +141,14 @@ public class Home extends javax.swing.JFrame {
                     .addGap(34, 34, 34)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton5, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton6, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton7, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-                    .addGap(36, 36, 36)
+                        .addComponent(jButton7, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton6, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-                    .addGap(120, 120, 120))
+                        .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap())
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -185,9 +183,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        
-        About about = new About();
-        about.setVisible(true);
+
+        AddScheme addScheme = new AddScheme();
+        addScheme.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -207,10 +205,10 @@ public class Home extends javax.swing.JFrame {
     private JButton jButton3;
     private JButton jButton4;
     private JButton jButton5;
-    private JButton jButton6;
     private JButton jButton7;
     private JButton jButton8;
     private JButton jButton9;
+    private JButton jButton6;
     // End of variables declaration//GEN-END:variables
 
 

@@ -1,0 +1,108 @@
+JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.5" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space ::82:x, comp jPanel1:::p::p, space :p:37:p, comp jPanel2:::p::p, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :p:48:p, par l:::p {comp jPanel1:::::x, comp jPanel2:::::x}, space ::107:x}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq t {space :::p, par t {seq {space :0:0:x, comp jButton1:::p::p, space :p:62:p, comp jButton2:::p::p}, seq {par l {comp jLabel2::l:p::p, comp jLabel1::l:p::p}, space ::34:x, par l:::p {comp comboBox1::::169:x, comp comboBox2::::169:x}}}, space :p:27:p}}"
+				"$verticalGroup": "par l {seq {space :::p, par l {comp jLabel1:::p::p, comp comboBox1:::p::p}, space s:::p, par l {comp jLabel2:::p::p, comp comboBox2:::p::p}, space s:::p, par b {comp jButton1::b:p::p, comp jButton2::b:p::p}, space ::96:x}}"
+			} ) {
+				name: "jPanel1"
+				"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 2, true ), "Dienas pēc atnešanās", 4, 0, new java.awt.Font( "Tahoma", 0, 24 ), null )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "jButton1"
+					"text": "MEKLĒT"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton1ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel1"
+					"text": "Grupa:"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "jButton2"
+					"text": "ATPAKAĻ"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton2ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel2"
+					"text": "Dienu skaits"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox1"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox2"
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :::p, comp jScrollPane1:::p:537:p, space :::p}}"
+				"$verticalGroup": "par l {seq l {space :::p, comp jScrollPane1::::222:x, space :::p}}"
+			} ) {
+				name: "jPanel2"
+				"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 2, true ), "" )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "jScrollPane1"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "jTable1"
+						"border": new javax.swing.border.TitledBorder( "" )
+						"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+						}, new java.util.Vector {
+							add( "Title 1" )
+							add( "Title 2" )
+							add( "Title 3" )
+							add( "Title 4" )
+						}, new java.util.Vector {
+							add( class java.lang.Object )
+							add( class java.lang.Object )
+							add( class java.lang.Object )
+							add( class java.lang.Object )
+						}, new java.util.Vector {
+							add( true )
+							add( true )
+							add( true )
+							add( true )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					} )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 985, 425 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

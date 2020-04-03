@@ -1,0 +1,92 @@
+JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.5" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[fill][fill]"
+			"$rowConstraints": "[][][][]"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {space :::p, par l {seq {par l {comp jLabel5::l:p::p, comp jLabel1::l:p::p}, space :p:127:p, par l:::p {comp comboBox3:::::x, comp comboBox2::l:::x, seq t {comp button3:::::x, space s:::p, comp button1:::p:90:p}}}, seq l {par l {comp jLabel2::l:p::p, comp jLabel3::l:p::p, comp label1::l:p::p, comp jButton2:::p:137:p}, space :p:52:p, par l:::p {comp jButton1::t:p:90:p, comp jTextField4::l:::x, comp jTextField3::l:::x, comp jTextField2::l::247:x}}}, space :::x}}"
+				"$verticalGroup": "par l {seq l {space :p:15:p, par b {comp jLabel5::b:p::p, comp comboBox2::b:p::p}, space s:::p, par b {comp jLabel1::b:p::p, comp comboBox3::b:p::p}, space :::p, par b {comp button1::b:p::p, comp button3::b:p::p}, space s:::p, par b {comp jLabel2::b:p::p, comp jTextField2::b:p::p}, space s:::p, par b {comp jTextField3::b:p::p, comp jLabel3::b:p::p}, space s:::p, par b {comp jTextField4::b:p::p, comp label1::b:p::p}, space u:::p, par b {comp jButton1::b:p::p, comp jButton2::b:p::p}, space :::x}}"
+			} ) {
+				name: "jPanel1"
+				"border": new javax.swing.border.TitledBorder( new javax.swing.border.LineBorder( sfield java.awt.Color black, 2, true ), "Rediģēt shēmu", 4, 0, new java.awt.Font( "Tahoma", 0, 24 ), null )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "jTextField4"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jTextField4ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "jButton1"
+					"text": "REDIĢĒT"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton1ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel1"
+					"text": "Medikaments"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "jButton2"
+					"text": "DZĒST SHĒMU"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "jButton2ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "jTextField2"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel3"
+					"text": "Labot medikamentu"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "jTextField3"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel2"
+					"text": "Labot nosaukumu"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "jLabel5"
+					"text": "Nosaukums"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox2"
+					addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "comboBox2ItemStateChanged", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox3"
+					addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "comboBox3ItemStateChanged", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Labot datumu"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": "ATRAST"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button3"
+					"text": "DZĒST MEDIKAMENTU"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button3ActionPerformed", true ) )
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0 1 3"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "ATPAKAĻ"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button2ActionPerformed", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 3"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 520, 380 )
+			"location": new java.awt.Point( 0, 15 )
+		} )
+	}
+}

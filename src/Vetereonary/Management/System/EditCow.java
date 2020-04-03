@@ -16,9 +16,9 @@ import java.sql.*;
 /**
  * @author Jane Doe
  */
-public class Edit extends JFrame {
+public class EditCow extends JFrame {
     static Connection c;
-    public Edit() {
+    public EditCow() {
         initComponents();
         setTitle("Vetereonary Management  System");
         setResizable(false);
@@ -160,11 +160,12 @@ public class Edit extends JFrame {
         {
             jPanel1.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Redi\u0123\u0113t govi", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
-            jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-            , 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-            jPanel1. getBorder( )) ); jPanel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            jPanel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
+            (0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
+            .TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),jPanel1. getBorder()));jPanel1. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
+            propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
+            ;}});
 
             //---- jTextField4 ----
             jTextField4.addActionListener(e -> jTextField4ActionPerformed(e));
@@ -304,7 +305,7 @@ public class Edit extends JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Edit().setVisible(true);
+                new EditCow().setVisible(true);
             }
         });
 

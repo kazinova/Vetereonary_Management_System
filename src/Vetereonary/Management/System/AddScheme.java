@@ -81,8 +81,8 @@ public class AddScheme extends JFrame {
     }
 
     private void jButton2ActionPerformed(ActionEvent e) {
-        Home home = new Home();
-        home.setVisible(true);
+        HomeSchemes homeSchemes = new HomeSchemes();
+        homeSchemes.setVisible(true);
         this.dispose();
     }
 
@@ -146,12 +146,13 @@ public class AddScheme extends JFrame {
         {
             jPanel1.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Pievienot sh\u0113mu", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
-            jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,jPanel1. getBorder( )) ); jPanel1. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            jPanel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
+            .border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder
+            .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
+            awt.Font.BOLD,12),java.awt.Color.red),jPanel1. getBorder()))
+            ;jPanel1. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
+            ;
 
             //---- TextField4 ----
             TextField4.addActionListener(e -> jTextField4ActionPerformed(e));
@@ -190,35 +191,31 @@ public class AddScheme extends JFrame {
             jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))
+                                .addGroup(jPanel1Layout.createParallelGroup()
+                                    .addComponent(jLabel1)
+                                    .addComponent(label2)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TextField2, GroupLayout.Alignment.TRAILING)
+                                    .addComponent(TextField1, GroupLayout.Alignment.TRAILING)
+                                    .addComponent(TextField3, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup()
-                                            .addComponent(jLabel1)
-                                            .addComponent(label2)
-                                            .addComponent(jLabel2))
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(TextField2, GroupLayout.Alignment.TRAILING)
-                                            .addComponent(TextField1, GroupLayout.Alignment.TRAILING)
-                                            .addComponent(TextField3, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(label1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(TextField5, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(label1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(39, 39, 39)
+                                .addComponent(TextField5, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
                                 .addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(TextField4, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                                .addComponent(TextField4, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 500, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton1)
+                                    .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE))))
                         .addGap(29, 29, 29))
             );
             jPanel1Layout.setVerticalGroup(
@@ -240,13 +237,12 @@ public class AddScheme extends JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                    .addComponent(TextField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
-                                .addComponent(TextField5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(TextField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                            .addComponent(TextField5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                             .addComponent(label1))
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)

@@ -119,8 +119,8 @@ public class EditCow extends JFrame {
     }
 
     private void button2ActionPerformed(ActionEvent e) {
-        Home home = new Home();
-        home.setVisible(true);
+        HomeCow homeCow = new HomeCow();
+        homeCow.setVisible(true);
         this.dispose();
     }
 
@@ -160,12 +160,12 @@ public class EditCow extends JFrame {
         {
             jPanel1.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Redi\u0123\u0113t govi", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
-            jPanel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder
-            (0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax.swing.border
-            .TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),jPanel1. getBorder()));jPanel1. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void
-            propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
-            ;}});
+            jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,jPanel1. getBorder( )) ); jPanel1. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //---- jTextField4 ----
             jTextField4.addActionListener(e -> jTextField4ActionPerformed(e));

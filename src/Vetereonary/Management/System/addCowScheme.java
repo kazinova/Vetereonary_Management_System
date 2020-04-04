@@ -63,16 +63,15 @@ public class addCowScheme extends JFrame {
     }
 
     private void button2ActionPerformed(ActionEvent e) {
-        Home home = new Home();
-        home.setVisible(true);
+        HomeSchemes homeSchemes = new HomeSchemes();
+        homeSchemes.setVisible(true);
         this.dispose();
     }
 
     private void list1ValueChanged(ListSelectionEvent e) {
         if (list1.getSelectedValue().toString().isEmpty()) {
-        } else {
             JOptionPane.showMessageDialog(new JFrame(), "Nav izvēlēta shēma!", "Message", JOptionPane.INFORMATION_MESSAGE);
-
+        } else {
             try {
                 PreparedStatement ps = c.prepareStatement("select * from "+list1.getSelectedValue().toString()+";");
                 ResultSet set = ps.executeQuery();
@@ -126,12 +125,12 @@ public class addCowScheme extends JFrame {
         {
             panel2.setBorder(new TitledBorder(new LineBorder(Color.black, 2), "Sh\u0113ma", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
-            panel2.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
-            border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER
-            ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font
-            .BOLD,12),java.awt.Color.red),panel2. getBorder()));panel2. addPropertyChangeListener(
-            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r"
-            .equals(e.getPropertyName()))throw new RuntimeException();}});
+            panel2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+            EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+            . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
+            java . awt. Color .red ) ,panel2. getBorder () ) ); panel2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )
+            throw new RuntimeException( ) ;} } );
 
             //======== jScrollPane1 ========
             {

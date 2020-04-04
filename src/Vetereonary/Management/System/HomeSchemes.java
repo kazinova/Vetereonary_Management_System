@@ -4,11 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class Home extends javax.swing.JFrame {
+public class HomeSchemes extends JFrame {
 
     private void jButton7ActionPerformed(ActionEvent e) {
-        HomeSchemes homeCow = new HomeSchemes();
-        homeCow.setVisible(true);
+        EditCow editCow = new EditCow();
+        editCow.setVisible(true);
         this.dispose();
     }
 
@@ -24,7 +24,7 @@ public class Home extends javax.swing.JFrame {
         this.dispose();
     }
 
-    public Home() {
+    public HomeSchemes() {
         initComponents();
         setTitle("Vetereonary Management  System");
         setResizable(false);
@@ -36,7 +36,10 @@ public class Home extends javax.swing.JFrame {
     // Generated using JFormDesigner Evaluation license - Jane Doe
     private void initComponents() {
         jLabel1 = new JLabel();
+        jButton2 = new JButton();
+        jButton3 = new JButton();
         jButton4 = new JButton();
+        jButton6 = new JButton();
         jButton7 = new JButton();
 
         //======== this ========
@@ -47,27 +50,53 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setFont(new Font("Times New Roman", Font.BOLD, 30));
         jLabel1.setText("Vetereonary Management  System");
 
+        //---- jButton2 ----
+        jButton2.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        jButton2.setText("Pievienot Govi Sh\u0113mai");
+        jButton2.addActionListener(e -> jButton2ActionPerformed(e));
+
+        //---- jButton3 ----
+        jButton3.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        jButton3.setText("Sh\u0113mas");
+        jButton3.addActionListener(e -> jButton3ActionPerformed(e));
+
         //---- jButton4 ----
         jButton4.setFont(new Font("Times New Roman", Font.BOLD, 14));
-        jButton4.setText("Govis");
+        jButton4.setText("Redi\u0123\u0113t sh\u0113mu");
         jButton4.addActionListener(e -> jButton4ActionPerformed(e));
+
+        //---- jButton6 ----
+        jButton6.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        jButton6.setText("Pievienot Sh\u0113mu");
+        jButton6.addActionListener(e -> jButton6ActionPerformed(e));
 
         //---- jButton7 ----
         jButton7.setFont(new Font("Times New Roman", Font.BOLD, 14));
-        jButton7.setText("Sh\u0113mas");
-        jButton7.addActionListener(e -> jButton7ActionPerformed(e));
+        jButton7.setText("ATPAKA\u013b");
+        jButton7.setBackground(UIManager.getColor("InternalFrame.activeTitleGradient"));
+        jButton7.setForeground(Color.red);
+        jButton7.addActionListener(e -> jButton5ActionPerformed(e));
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(100, 100, 100)
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1)
+                    .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(100, 100, 100)
+                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton6, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                                        .addComponent(jButton3, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGap(262, 262, 262)
                             .addComponent(jButton7, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(138, Short.MAX_VALUE))
         );
@@ -79,49 +108,55 @@ public class Home extends javax.swing.JFrame {
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton4, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton7, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-                    .addGap(286, 286, 286))
+                        .addComponent(jButton6, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+                    .addGap(30, 30, 30)
+                    .addComponent(jButton7, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
         );
-        setSize(670, 245);
+        pack();
         setLocationRelativeTo(getOwner());
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+    private void jButton1ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         NewCow newCow = new NewCow();
         newCow.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+    private void jButton3ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
         Schemes schemes=new Schemes();
         schemes.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton4ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-        HomeCow homeCow= new HomeCow();
-        homeCow.setVisible(true);
+        EditSchema editSchema= new EditSchema();
+        editSchema.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
-        DayCount dayCount=new DayCount();
-        dayCount.setVisible(true);
+    private void jButton5ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+        Home home = new Home();
+        home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButton6ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
         AddScheme addScheme = new AddScheme();
         addScheme.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         addCowScheme addCowScheme=new addCowScheme();
         addCowScheme.setVisible(true);
@@ -132,7 +167,10 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Jane Doe
     private JLabel jLabel1;
+    private JButton jButton2;
+    private JButton jButton3;
     private JButton jButton4;
+    private JButton jButton6;
     private JButton jButton7;
     // End of variables declaration//GEN-END:variables
 
@@ -144,9 +182,9 @@ public class Home extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Metal".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -156,16 +194,16 @@ public class Home extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                new HomeSchemes().setVisible(true);
             }
         });
 

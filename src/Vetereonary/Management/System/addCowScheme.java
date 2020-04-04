@@ -17,6 +17,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * @author Jane Doe
@@ -28,6 +30,9 @@ public class addCowScheme extends JFrame {
         setTitle("Vetereonary Management  System");
         setResizable(false);
         setLocationRelativeTo(null);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable2.getTableHeader().setReorderingAllowed(false);
+
         try{
 
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/vetDB", "root", "");
@@ -38,16 +43,18 @@ public class addCowScheme extends JFrame {
     }
     private void dispplayList() {
         DefaultListModel model2 = new DefaultListModel();
+        ArrayList a = new ArrayList();
         try{
             PreparedStatement ps = c.prepareStatement("SELECT table_name FROM information_schema.tables WHERE table_schema = 'vetdb' AND NOT TABLE_NAME='govis'");
             ResultSet set = ps.executeQuery();
             while (set.next()) //go through each row that your query returns
             {
-                String comboBox2 = set.getString("table_name"); //get the element in column "item_code"
-                model2.addElement(comboBox2); //add each item to the model
+                String elemList = set.getString("table_name"); //get the element in column "item_code"
+                a.add(elemList); //add each item to the model
             }
+            Collections.sort(a);
+            model2.addAll(a);
             list1.setModel(model2);
-
         }
         catch(Exception e){e.printStackTrace();}
 
@@ -125,12 +132,12 @@ public class addCowScheme extends JFrame {
         {
             panel2.setBorder(new TitledBorder(new LineBorder(Color.black, 2), "Sh\u0113ma", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
-            panel2.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
-            EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing
-            . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
-            java . awt. Color .red ) ,panel2. getBorder () ) ); panel2. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
-            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )
-            throw new RuntimeException( ) ;} } );
+            panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
+            border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER
+            , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font
+            .BOLD ,12 ), java. awt. Color. red) ,panel2. getBorder( )) ); panel2. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072"
+            .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
             //======== jScrollPane1 ========
             {
@@ -333,8 +340,7 @@ public class addCowScheme extends JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new addCowScheme().setVisible(true);
-            }
-        });
+            }        });
 
     }
 }

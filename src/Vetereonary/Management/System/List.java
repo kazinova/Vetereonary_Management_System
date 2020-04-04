@@ -32,6 +32,8 @@ public class List extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         jTable1.setEnabled(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+
 
         try{
 
@@ -54,7 +56,7 @@ public class List extends JFrame {
 
 
         try{
-            PreparedStatement ps = c.prepareStatement("select DISTINCT grupa from govis ORDER BY grupa;");
+            PreparedStatement ps = c.prepareStatement("select grupa from govis GROUP BY Grupa ORDER BY grupa;");
             ResultSet set = ps.executeQuery();
             model2.addElement("Visas");
             while (set.next()) //go through each row that your query returns
@@ -132,13 +134,12 @@ public class List extends JFrame {
         //======== panel2 ========
         {
             panel2.setBorder(new LineBorder(Color.black, 2));
-            panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
-            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-            Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-            ) ,panel2. getBorder( )) ); panel2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
-            ) )) throw new RuntimeException( ); }} );
+            panel2.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,panel2. getBorder( )) ); panel2. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
 
             //======== jScrollPane1 ========
             {

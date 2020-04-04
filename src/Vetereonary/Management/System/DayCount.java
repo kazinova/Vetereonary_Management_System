@@ -12,6 +12,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
 import java.sql.*;
 
 /**
@@ -23,19 +24,23 @@ public class DayCount extends JFrame {
         initComponents();
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         DefaultComboBoxModel mode2 = new DefaultComboBoxModel();
+        DefaultTableModel model3 = new DefaultTableModel();
         mode2.addElement("8");
         mode2.addElement("30");
         comboBox2.setModel(mode2);
         setTitle("Vetereonary Management  System");
         setResizable(false);
         setLocationRelativeTo(null);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable2.getTableHeader().setReorderingAllowed(false);
+        jTable3.getTableHeader().setReorderingAllowed(false);
 
         try{
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/vetDB", "root", "");
         }
         catch(Exception e){e.printStackTrace();}
         try{
-            PreparedStatement ps = c.prepareStatement("select DISTINCT grupa from govis ORDER BY grupa;");
+            PreparedStatement ps = c.prepareStatement("select grupa from govis GROUP BY Grupa ORDER BY grupa;");
             ResultSet set = ps.executeQuery();
             model.addElement("Visas");
             while (set.next()) //go through each row that your query returns
@@ -46,11 +51,11 @@ public class DayCount extends JFrame {
             comboBox1.setModel(model);
         }
         catch(Exception e){e.printStackTrace();}
+        displaytable();
 
 
     }
     private void displaytable(){
-
         String grupa;
         if(comboBox1.getSelectedItem().toString()=="Visas") {
             grupa="Grupa";
@@ -60,21 +65,35 @@ public class DayCount extends JFrame {
         }
         if(comboBox2.getSelectedItem().toString()=="8"){
             try {
-                PreparedStatement ps = c.prepareStatement("SELECT* from govis WHERE DATEDIFF(CURRENT_DATE,Atnešanās_datums)>=6 AND DATEDIFF(CURRENT_DATE,Atnešanās_datums)<=10 AND Grupa="+grupa+";");
+                PreparedStatement ps = c.prepareStatement("SELECT* from govis WHERE (DATEDIFF(CURRENT_DATE,Atnešanās_datums)=6 OR DATEDIFF(CURRENT_DATE,Atnešanās_datums)=7) AND Grupa="+grupa+";");
                 ResultSet set = ps.executeQuery();
-
                 jTable1.setModel(DbUtils.resultSetToTableModel(set));
-            } catch (Exception e) {
+                ps = c.prepareStatement("SELECT* from govis WHERE DATEDIFF(CURRENT_DATE,Atnešanās_datums)=8 AND Grupa="+grupa+";");
+                set = ps.executeQuery();
+                jTable2.setModel(DbUtils.resultSetToTableModel(set));
+                ps = c.prepareStatement("SELECT* from govis WHERE (DATEDIFF(CURRENT_DATE,Atnešanās_datums)=9 OR DATEDIFF(CURRENT_DATE,Atnešanās_datums)=10) AND Grupa="+grupa+";");
+                set = ps.executeQuery();
+                jTable3.setModel(DbUtils.resultSetToTableModel(set));
+
+            }
+            catch(SQLException e) {
                 e.printStackTrace();
             }
         }
         else{
             try {
-                PreparedStatement ps = c.prepareStatement("SELECT* from govis WHERE DATEDIFF(CURRENT_DATE,Atnešanās_datums)>=28 AND DATEDIFF(CURRENT_DATE,Atnešanās_datums)<=32 AND Grupa="+grupa+";");
+                PreparedStatement ps = c.prepareStatement("SELECT* from govis WHERE DATEDIFF(CURRENT_DATE,Atnešanās_datums)=28 OR DATEDIFF(CURRENT_DATE,Atnešanās_datums)=29 AND Grupa="+grupa+";");
                 ResultSet set = ps.executeQuery();
-
                 jTable1.setModel(DbUtils.resultSetToTableModel(set));
-            } catch (Exception e) {
+                ps = c.prepareStatement("SELECT* from govis WHERE DATEDIFF(CURRENT_DATE,Atnešanās_datums)=30;");
+                set = ps.executeQuery();
+                jTable2.setModel(DbUtils.resultSetToTableModel(set));
+                ps = c.prepareStatement("SELECT* from govis WHERE DATEDIFF(CURRENT_DATE,Atnešanās_datums)=31 OR DATEDIFF(CURRENT_DATE,Atnešanās_datums)=32 AND Grupa="+grupa+";");
+                set = ps.executeQuery();
+                jTable3.setModel(DbUtils.resultSetToTableModel(set));
+
+            }
+            catch(SQLException e) {
                 e.printStackTrace();
             }
         }
@@ -93,11 +112,18 @@ public class DayCount extends JFrame {
         this.dispose();
     }
 
+    private void comboBox1ItemStateChanged(ItemEvent e) {
+        displaytable();
+    }
+
+    private void comboBox2ItemStateChanged(ItemEvent e) {
+        displaytable();
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Jane Doe
         jPanel1 = new JPanel();
-        jButton1 = new JButton();
         jLabel1 = new JLabel();
         jButton2 = new JButton();
         jLabel2 = new JLabel();
@@ -106,6 +132,12 @@ public class DayCount extends JFrame {
         jPanel2 = new JPanel();
         jScrollPane1 = new JScrollPane();
         jTable1 = new JTable();
+        jPanel3 = new JPanel();
+        jScrollPane2 = new JScrollPane();
+        jTable2 = new JTable();
+        jPanel4 = new JPanel();
+        jScrollPane3 = new JScrollPane();
+        jTable3 = new JTable();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -115,16 +147,14 @@ public class DayCount extends JFrame {
         {
             jPanel1.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Dienas p\u0113c atne\u0161an\u0101s", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
                 new Font("Tahoma", Font.PLAIN, 24)));
-            jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,jPanel1. getBorder( )) ); jPanel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            jPanel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
+            new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e"
+            , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 )
+            , java. awt. Color. red) ,jPanel1. getBorder( )) ); jPanel1. addPropertyChangeListener (
+            new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( )
             ; }} );
-
-            //---- jButton1 ----
-            jButton1.setText("MEKL\u0112T");
-            jButton1.addActionListener(e -> jButton1ActionPerformed(e));
 
             //---- jLabel1 ----
             jLabel1.setText("Grupa:");
@@ -136,6 +166,12 @@ public class DayCount extends JFrame {
             //---- jLabel2 ----
             jLabel2.setText("Dienu skaits");
 
+            //---- comboBox1 ----
+            comboBox1.addItemListener(e -> comboBox1ItemStateChanged(e));
+
+            //---- comboBox2 ----
+            comboBox2.addItemListener(e -> comboBox2ItemStateChanged(e));
+
             GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
             jPanel1.setLayout(jPanel1Layout);
             jPanel1Layout.setHorizontalGroup(
@@ -145,8 +181,6 @@ public class DayCount extends JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1)
-                                .addGap(62, 62, 62)
                                 .addComponent(jButton2))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup()
@@ -170,16 +204,16 @@ public class DayCount extends JFrame {
                             .addComponent(jLabel2)
                             .addComponent(comboBox2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addContainerGap(96, Short.MAX_VALUE))
+                        .addComponent(jButton2)
+                        .addContainerGap(106, Short.MAX_VALUE))
             );
         }
 
         //======== jPanel2 ========
         {
-            jPanel2.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), ""));
+            jPanel2.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Tuvoj\u0101s", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
+                new Font("Tahoma", Font.PLAIN, 20)));
+            jPanel2.setBackground(Color.yellow);
 
             //======== jScrollPane1 ========
             {
@@ -197,6 +231,7 @@ public class DayCount extends JFrame {
                         "Title 1", "Title 2", "Title 3", "Title 4"
                     }
                 ));
+                jTable1.setRowSelectionAllowed(false);
                 jScrollPane1.setViewportView(jTable1);
             }
 
@@ -213,7 +248,95 @@ public class DayCount extends JFrame {
                 jPanel2Layout.createParallelGroup()
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                        .addContainerGap())
+            );
+        }
+
+        //======== jPanel3 ========
+        {
+            jPanel3.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "\u0160odien", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
+                new Font("Tahoma", Font.PLAIN, 20)));
+            jPanel3.setBackground(Color.green);
+
+            //======== jScrollPane2 ========
+            {
+
+                //---- jTable2 ----
+                jTable2.setBorder(new TitledBorder(""));
+                jTable2.setModel(new DefaultTableModel(
+                    new Object[][] {
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                    },
+                    new String[] {
+                        "Title 1", "Title 2", "Title 3", "Title 4"
+                    }
+                ));
+                jTable2.setRowSelectionAllowed(false);
+                jScrollPane2.setViewportView(jTable2);
+            }
+
+            GroupLayout jPanel3Layout = new GroupLayout(jPanel3);
+            jPanel3.setLayout(jPanel3Layout);
+            jPanel3Layout.setHorizontalGroup(
+                jPanel3Layout.createParallelGroup()
+                    .addGroup(GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 537, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+            );
+            jPanel3Layout.setVerticalGroup(
+                jPanel3Layout.createParallelGroup()
+                    .addGroup(GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 124, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+            );
+        }
+
+        //======== jPanel4 ========
+        {
+            jPanel4.setBorder(new TitledBorder(new LineBorder(Color.black, 2, true), "Pag\u0101jis", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION,
+                new Font("Tahoma", Font.PLAIN, 20)));
+            jPanel4.setBackground(Color.red);
+
+            //======== jScrollPane3 ========
+            {
+
+                //---- jTable3 ----
+                jTable3.setBorder(new TitledBorder(""));
+                jTable3.setModel(new DefaultTableModel(
+                    new Object[][] {
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                        {null, null, null, null},
+                    },
+                    new String[] {
+                        "Title 1", "Title 2", "Title 3", "Title 4"
+                    }
+                ));
+                jTable3.setRowSelectionAllowed(false);
+                jScrollPane3.setViewportView(jTable3);
+            }
+
+            GroupLayout jPanel4Layout = new GroupLayout(jPanel4);
+            jPanel4.setLayout(jPanel4Layout);
+            jPanel4Layout.setHorizontalGroup(
+                jPanel4Layout.createParallelGroup()
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 537, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+            );
+            jPanel4Layout.setVerticalGroup(
+                jPanel4Layout.createParallelGroup()
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                         .addContainerGap())
             );
         }
@@ -222,21 +345,29 @@ public class DayCount extends JFrame {
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(82, Short.MAX_VALUE)
+                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                    .addGap(17, 17, 17)
                     .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addGap(37, 37, 37)
-                    .addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(21, 21, 21))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(48, 48, 48)
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(107, Short.MAX_VALUE))
+                    .addContainerGap()
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(jPanel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                            .addGap(38, 38, 38)
+                            .addComponent(jPanel3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                    .addComponent(jPanel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addGap(24, 24, 24))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -246,7 +377,6 @@ public class DayCount extends JFrame {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Jane Doe
     private JPanel jPanel1;
-    private JButton jButton1;
     private JLabel jLabel1;
     private JButton jButton2;
     private JLabel jLabel2;
@@ -255,6 +385,12 @@ public class DayCount extends JFrame {
     private JPanel jPanel2;
     private JScrollPane jScrollPane1;
     private JTable jTable1;
+    private JPanel jPanel3;
+    private JScrollPane jScrollPane2;
+    private JTable jTable2;
+    private JPanel jPanel4;
+    private JScrollPane jScrollPane3;
+    private JTable jTable3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

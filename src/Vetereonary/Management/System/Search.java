@@ -27,6 +27,8 @@ public class Search extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         jTable1.setEnabled(false);
         DefaultComboBoxModel model = new DefaultComboBoxModel();
+        jTable1.getTableHeader().setReorderingAllowed(false);
+
 
         try{
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/vetDB", "root", "");

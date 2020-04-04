@@ -25,7 +25,9 @@ public class NewCow extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         jTable1.setEnabled(false);
-        
+        jTable1.getTableHeader().setReorderingAllowed(false);
+
+
         try{
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/vetDB", "root", "");
             displaytable();

@@ -32,6 +32,8 @@ public class AddScheme extends JFrame {
         setTitle("Vetereonary Management  System");
         setResizable(false);
         setLocationRelativeTo(null);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+
         try{
 
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/vetDB", "root", "");
@@ -371,7 +373,7 @@ public class AddScheme extends JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new addCowScheme().setVisible(true);
+                new AddScheme().setVisible(true);
             }
         });
 
